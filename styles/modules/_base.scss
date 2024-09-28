@@ -1,0 +1,226 @@
+:root {
+	color-scheme: light dark;
+
+	--main-text-color: #213547;
+	--main-bg-color: #ffffff;
+	--main-surface-color: rgb(228, 230, 238);
+
+	--primary-color: #005cad;
+	--secondary-color: #667989;
+	--tertiary-color: #008295;
+
+	--success-color: #28a745;
+	--warning-color: #ffc107;
+	--danger-color: #dc3545;
+	--info-color: #007bff;
+
+	--code-bg-color: rgb(242, 244, 246);
+	--pre-bg-color: var(--code-bg-color);
+	--code-color: #213547;
+	--input-bg-color: rgb(246, 248, 250);
+	--input-border-color: rgba(0, 0, 0, 0.02);
+	--table-bg-color: var(--input-bg-color);
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	line-height: 1.6;
+	font-weight: 400;
+	color: var(--main-text-color);
+	background-color: var(--main-bg-color);
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	letter-spacing: 0.14px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+h6 { font-size: 1rem;     }
+h5 { font-size: 1.224rem; }
+h4 { font-size: 1.50rem;  }
+h3 { font-size: 1.84rem;  }
+h2 { font-size: 2.25rem;  }
+h1 { font-size: 2.75rem;  }
+
+ul { margin-left: 1rem; }
+ul ul { margin-left: calc(2rem + 0.24rem); }
+
+p + p { margin-top: 1.2rem; }
+
+blockquote {
+	& cite { 
+		font-size: 0.938rem; 
+		opacity: 0.92;
+
+		&::before { content: "— "; }
+	}
+}
+
+a {
+	color: #478be6;
+
+	&:active {
+		transform: scale(102%);
+	}
+}
+
+button, input {
+	font-size: inherit;
+	font-family: inherit;
+	line-height: inherit;
+	cursor: pointer;
+
+	&:active {
+		transform: scale(102%);
+	}
+}
+
+button, input, .is-btn {
+	display: inline-block;
+	padding: 0.25rem 0.75rem;
+	text-decoration: none;
+	background-color: #eee;
+	color: rgba(0, 0, 0, 0.8);
+	border: 1px solid #eee;
+
+	&:hover {
+		opacity: 0.72;
+	}
+}
+
+hr {
+	margin: 1rem auto;
+	border: 0.1rem solid var(--main-surface-color);
+}
+
+code, kbd {
+	padding: 0.12rem 0.48rem;
+	border-radius: 0.28rem;
+	background-color: var(--code-bg-color);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0.28);
+	font-family: 'Consolas', 'Courier New', Courier, monospace;
+	font-size: 0.98rem;
+	color: var(--code-color);
+}
+
+pre {
+	padding: 0.6rem;
+	background-color: var(--pre-bg-color);
+	overflow-x: auto; /* Mejor usar auto en lugar de scroll */
+}
+
+pre > code {
+	padding: 0;
+	color: var(--main-text-color);
+	background-color: transparent;
+	box-shadow: none;
+}
+
+var {
+	font-style: italic;
+	font-size: 0.98rem;
+}
+
+img, video {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+figure {
+	display: inline-block;
+
+	& > figcaption {
+		font-size: 0.92rem;
+		font-style: italic;
+		opacity: 0.78;
+	}
+}
+
+table {
+	max-width: 100%;
+	display: block;
+	overflow-x: auto;
+
+	& th, td {
+		border: 1px solid var(--table-bg-color);
+		padding: 0.5rem;
+		text-align: left;  
+	}
+	& th {
+		background-color: var(--table-bg-color);
+	}
+}
+
+form {
+	& * {
+	  display: block;
+	  margin: 0.24rem 0;
+	  width: 100%;
+	}
+	
+	& input,
+	& select,
+	& textarea {
+	  border: 1px solid var(--input-border-color);
+	  background-color: var(--input-bg-color);
+	  font-family: inherit;
+	  font-size: inherit;
+	  width: 100%;
+	}
+  
+	& > select {
+	  padding: 0.5rem;
+	  font-weight: 300;
+	}
+  
+	& input {
+	  color: var(--main-text-color);
+  
+	  &[type="checkbox"],
+	  &[type="radio"] {
+		display: inline-block;
+		width: auto;
+	  }
+  
+	  &[type="file"] {
+		font-weight: 300;
+		
+		&::file-selector-button {
+		  font-family: inherit;
+		  font-size: inherit;
+		  border: 1px solid var(--input-border-color);
+		  padding: 0.1rem 0.75rem;
+		}
+	  }
+  
+	  &:active {
+		transform: none;
+	  }
+  
+	  &:hover {
+		opacity: 1;
+	  }
+	}
+
+	& textarea {
+	  min-width: 100%;
+	  resize: vertical;
+	  padding: 0.5rem;
+	}
+}
+  
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--main-text-color: rgba(255, 255, 255, 0.85);
+		--main-surface-color: rgba(255, 255, 255, 0.05);
+		--main-bg-color: #242424;
+
+		--code-bg-color: rgb(228, 228, 228);
+		--pre-bg-color: rgba(255, 255, 255, 0.03);
+
+		--input-bg-color: rgba(255, 255, 255, 0.03);
+		--input-border-color: rgba(255, 255, 255, 0.01);
+	}
+}
