@@ -1,0 +1,54 @@
+:root {
+	--margin-top: 0;
+	--margin-bottom: 0;
+	--margin-left: 0;
+	--margin-right: 0;
+	--margin: 0;
+	
+	--padding: 0;
+	--padding-top: 0;
+	--padding-bottom: 0;
+	--padding-left: 0;
+	--padding-right: 0;
+	
+	--border: none;
+	--border-width: medium;
+	--border-style: none;
+	--border-color: currentColor;
+	--border-radius: 0;
+	
+	--width: auto;
+	--height: auto;
+	--min-width: none;
+	--max-width: none;
+	--min-height: none;
+	--max-height: none;
+	
+	--box-sizing: border-box;
+	--overflow: visible;
+}
+.inline-block, .block, .box {
+	--margin: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
+	margin: var(--margin);
+
+	--padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
+	padding: var(--padding);
+
+	border: var(--border);
+	border-width: var(--border-width);
+	border-style: var(--border-style);
+	border-color: var(--border-color);
+	border-radius: var(--border-radius);
+
+	box-sizing: var(--box-sizing);
+
+	&:not(.text) {
+		width: var(--width);
+		height: var(--height);
+		min-width: var(--min-width);
+		max-width: var(--max-width);
+		min-height: var(--min-height);
+		max-height: var(--max-height);
+		overflow: var(--overflow);
+	}
+}

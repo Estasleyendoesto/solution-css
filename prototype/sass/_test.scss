@@ -1,0 +1,102 @@
+.test, .test-items {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	background-color: #eee;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+
+	transition: max-width .6s ease-in-out;
+}
+.test.outline {
+	background-color: transparent;
+}
+.test-items > * {
+	margin: 4px;
+	padding: 2px 6px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	user-select: none;
+}
+
+.hbar2 {
+	--justify: flex-end;
+}
+.hbar3 {
+	--justify: center;
+}
+.hbar4 {
+	--justify: space-between;
+}
+.hbar5 {
+	--gutter: 2.5%;
+	--auto-fill: 1;
+}
+
+p > i { 
+	margin-left: 10px;
+	font-size: 0.8rem; 
+}
+
+.xgrid-r1 {
+	--columns-sm: 12;
+	--columns-xs: 6;
+	--gutter: 0px;
+}
+.xgrid-r2 {
+	--columns-xs: 2;
+	--columns-xl: 4;
+}
+.xgrid-r3 {
+	--columns-xs: 3;
+}
+.xgrid-r4 {
+	--columns: 3;
+}
+.xgrid-r4 > .c-1 {
+	--span: 2;
+}
+.xgrid-r4 > .c-2::after {
+	content: " " var(--gutter-factor);
+}
+.hbar6 {
+	--justify-lg: space-between;
+	--justify-xs: center;
+	align-content: center;
+	height: 120px;
+}
+.hbar6 > .c-1 {
+	width: 260px;
+}
+.hbar6 > .c-2 {
+	width: 480px;
+}
+.hbar7 {
+	--justify-lg: space-between;
+	--justify-xs: center;
+	align-content: center;
+	align-items: baseline;
+	min-height: 120px;
+}
+.hbar7 > .c-1 {
+	width: 280px;
+}
+.hbar7 > .c-2 {
+	width: 200px;
+	height: 42px;
+	line-height: 42px;
+	text-align: center;
+
+	--margin-md: calc(15% * var(--is-md));
+	margin: 0 var(--margin-md, 0);
+}
+.hbar7 > .c-3 {
+	width: 280px;
+	text-align: right;
+}
+.hbar8 {
+	height: 200px;
+	justify-content: center;
+	align-items: baseline;
+	align-content: center;
+}

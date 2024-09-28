@@ -1,0 +1,12 @@
+:root {
+	/* ul, ol */
+	--list-style-type: disc;
+	--list-style-image: none;
+	--list-style-position: outside;
+}
+
+ul, ol, ul.list, ol.list {
+	list-style-type: var(--list-style-type);
+	list-style-image: var(--list-style-image);
+	list-style-position: var(--list-style-position);
+}

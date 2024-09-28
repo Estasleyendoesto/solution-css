@@ -1,0 +1,26 @@
+:root {
+	--opacity: 1;
+	--box-shadow: none;
+	--visibility: visible;
+	--cursor: auto;
+	
+	--filter: none;
+	--transform: none;
+	--transition: none;
+	--animation: none;
+	
+	--outline: none;
+}
+.visual {
+	opacity: var(--opacity);
+	box-shadow: var(--box-shadow);
+	visibility: var(--visibility);
+	cursor: var(--cursor);
+	
+	filter: var(--filter);
+	transform: var(--transform);
+	transition: var(--transition);
+	animation: var(--animation);
+	
+	outline: var(--outline);
+}

@@ -1,0 +1,39 @@
+:root {
+	--color: black;
+	--font-size: 16px;
+	--font-family: Arial, sans-serif;
+	--font-weight: normal;
+	--line-height: 1.5;
+	--text-align: left;
+	--text-transform: none;
+	--letter-spacing: normal;
+	--word-spacing: normal;
+	--text-decoration: none;
+	--text-shadow: none;
+
+	--line-break: auto;
+	--text-overflow: clip;
+	--white-space: normal;
+	--word-break: normal;
+}
+.text {
+	display: inline;
+}
+.text-block, .text {
+	color: var(--color);
+	font-size: var(--font-size);
+	font-family: var(--font-family);
+	font-weight: var(--font-weight);
+	line-height: var(--line-height);
+	text-align: var(--text-align);
+	text-transform: var(--text-transform);
+	letter-spacing: var(--letter-spacing);
+	word-spacing: var(--word-spacing);
+	text-decoration: var(--text-decoration);
+	text-shadow: var(--text-shadow);
+
+	line-break: var(--line-break);
+	text-overflow: var(--text-overflow);
+	white-space: var(--white-space);
+	word-break: var(--word-break);
+}

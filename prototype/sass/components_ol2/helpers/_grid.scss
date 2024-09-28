@@ -1,0 +1,5 @@
+.grid {
+	&.-gr-fluid {
+		grid-template-columns: repeat(auto-fit, minmax(var(--grid-columns-min-size), var(--grid-columns-size)));
+	}
+}

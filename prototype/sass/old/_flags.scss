@@ -1,0 +1,29 @@
+:root {
+	--text-color: black;
+	--padding: 0;
+	--margin: 0;
+	--background-color: white;
+	--border-size: 1px;
+	--border-texture: solid;
+	--border-color: black;
+	--border-radius: 0;
+
+	--max-width: auto;
+}
+
+.-m {
+	margin: var(--margin);
+}
+.-p {
+	padding: var(--padding);
+}
+.-color {
+	color: var(--text-color);
+}
+.-bg-color {
+	background-color: var(--background-color);
+}
+.-border {
+	border: var(--border-size) var(--border-texture) var(--border-color);
+	border-radius: var(--border-radius);
+}

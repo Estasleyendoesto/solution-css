@@ -1,0 +1,237 @@
+:root {
+	--xs-breakpoint: 480px;
+	--sm-breakpoint: 540px;
+	--md-breakpoint: 720px;
+	--lg-breakpoint: 960px;
+	--xl-breakpoint: 1140px;
+	--xxl-breakpoint: 1320px;
+
+	--is-xs: 0;
+	--is-sm: 0;
+	--is-md: 0;
+	--is-lg: 0;
+	--is-xl: 0;
+	--is-xxl: 0;
+}
+/*
+	Container
+	-------------------------------------------------
+*/
+.container, .container-fluid {
+	--xpadding: 1.5rem;
+
+	margin: 0 auto;
+	width: 100%;
+	min-width: 100px;
+	padding-left: var(--xpadding);
+	padding-right: var(--xpadding);
+	box-sizing: border-box;
+}
+.container {
+	--max-width: calc( 
+		( var(--xs-breakpoint) * var(--is-xs) ) +
+		( var(--sm-breakpoint) * var(--is-sm) ) +
+		( var(--md-breakpoint) * var(--is-md) ) +
+		( var(--lg-breakpoint) * var(--is-lg) ) +
+		( var(--xl-breakpoint) * var(--is-xl) ) +
+		( var(--xxl-breakpoint) * var(--is-xxl) )
+	);
+
+	max-width: var(--max-width);
+}
+.container-fluid {
+	max-width: 100%;
+}
+
+/*
+	xgrid
+	-------------------------------------------------
+*/
+.xgrid, .xgrid-r {
+	display: grid;
+}
+.xgrid {
+	grid-template-columns: repeat(auto-fit, minmax( 100px , 1fr));
+	column-gap: var(--gutter, 1rem);
+	& > * { grid-column: var(--span, span auto); }
+}
+.xgrid-r {
+	/* Columns Calc */
+	--columns-sm: var(--columns-xs);	
+	--columns-md: var(--columns-sm);	
+	--columns-lg: var(--columns-md);	
+	--columns-xl: var(--columns-lg);	
+	--columns-xxl: var(--columns-xl);	
+
+	--columns-factor: calc( 
+		( var(--columns-xs, 0) * var(--is-xs) ) +
+		( var(--columns-sm, 0) * var(--is-sm) ) +
+		( var(--columns-md, 0) * var(--is-md) ) +
+		( var(--columns-lg, 0) * var(--is-lg) ) +
+		( var(--columns-xl, 0) * var(--is-xl) ) +
+		( var(--columns-xxl, 0) * var(--is-xxl) )
+	);
+	--columns: var(--columns-factor, 1);
+	grid-template-columns: repeat(var(--columns), 1fr);
+
+	/* Gutter Calc */
+	--gutter-sm: var(--gutter-xs);	
+	--gutter-md: var(--gutter-sm);	
+	--gutter-lg: var(--gutter-md);	
+	--gutter-xl: var(--gutter-lg);	
+	--gutter-xxl: var(--gutter-xl);
+
+	--gutter-factor: calc(
+		( var(--gutter-xs, 8px) * var(--is-xs) ) +
+		( var(--gutter-sm, 12px) * var(--is-sm) ) +
+		( var(--gutter-md, 16px) * var(--is-md) ) +
+		( var(--gutter-lg, 20px) * var(--is-lg) ) +
+		( var(--gutter-xl, 24px) * var(--is-xl) ) +
+		( var(--gutter-xxl, 24px) * var(--is-xxl) )
+	);
+	--gutter: var(--gutter-factor);
+	column-gap: var(--gutter);
+
+	& > * {
+		--span-sm: var(--span-xs);	
+		--span-md: var(--span-sm);	
+		--span-lg: var(--span-md);	
+		--span-xl: var(--span-lg);	
+		--span-xxl: var(--span-xl);	
+
+		--span-factor: calc( 
+			( var(--span-xs, 0) * var(--is-xs) ) +
+			( var(--span-sm, 0) * var(--is-sm) ) +
+			( var(--span-md, 0) * var(--is-md) ) +
+			( var(--span-lg, 0) * var(--is-lg) ) +
+			( var(--span-xl, 0) * var(--is-xl) ) +
+			( var(--span-xxl, 0) * var(--is-xxl) )
+		);
+
+		--span: var(--span-factor, 1);
+		grid-column: span var(--span);
+	}
+}
+/*
+	Flex boxes
+	-------------------------------------------------
+*/
+.flex, .flex-r {
+	--justify: flex-start;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+} 
+.flex {
+	--gutter: 0;
+	--auto-fill: 0;
+	justify-content: var(--justify);
+	column-gap: var(--gutter);
+
+	& > * { flex-grow: var(--auto-fill); }
+}
+.flex-r {
+	--gutter-sm: var(--gutter-xs);	
+	--gutter-md: var(--gutter-sm);	
+	--gutter-lg: var(--gutter-md);	
+	--gutter-xl: var(--gutter-lg);	
+	--gutter-xxl: var(--gutter-xl);	
+
+	--gutter: calc( 
+		( var(--gutter-xs, 1%) * var(--is-xs) ) +
+		( var(--gutter-sm, 1%) * var(--is-sm) ) +
+		( var(--gutter-md, 1%) * var(--is-md) ) +
+		( var(--gutter-lg, 1%) * var(--is-lg) ) +
+		( var(--gutter-xl, 1%) * var(--is-xl) ) +
+		( var(--gutter-xxl, 1%) * var(--is-xxl) )
+	);
+	column-gap: var(--gutter, 2.5%);
+
+	--justify-sm: var(--justify-xs);	
+	--justify-md: var(--justify-sm);	
+	--justify-lg: var(--justify-md);	
+	--justify-xl: var(--justify-lg);	
+	--justify-xxl: var(--justify-xl);	
+
+	justify-content: var( --justify-factor, var(--justify, flex-start) );
+
+	& > * {
+		--grow-sm: var(--grow-xs);	
+		--grow-md: var(--grow-sm);	
+		--grow-lg: var(--grow-md);	
+		--grow-xl: var(--grow-lg);	
+		--grow-xxl: var(--grow-xl);	
+
+		--grow-factor: calc( 
+			( var(--grow-xs, 0) * var(--is-xs) ) +
+			( var(--grow-sm, 0) * var(--is-sm) ) +
+			( var(--grow-md, 0) * var(--is-md) ) +
+			( var(--grow-lg, 0) * var(--is-lg) ) +
+			( var(--grow-xl, 0) * var(--is-xl) ) +
+			( var(--grow-xxl, 0) * var(--is-xxl) )
+		);
+
+		--grow: var(--grow-factor, 0);
+		flex-grow: var(--grow);
+	} 
+}
+
+/*
+	Responsive
+	-------------------------------------------------
+*/
+@media (max-width: 576px) {
+	:root { --is-xs: 1; }
+	.flex-r { --justify-factor: var(--justify-xs); }
+	.hide-r {
+		 --display-factor: var(--display-xs); 
+		 --visibility-factor: var(--visibility-xs); 
+		 --position-factor: var(--position-xs); 
+	}
+}
+@media (min-width: 576px) and (max-width: 767px) {
+	:root { --is-sm: 1; }
+	.flex-r { --justify-factor: var(--justify-sm); }
+	.hide-r { 
+		--display-factor: var(--display-sm); 
+		--visibility-factor: var(--visibility-sm); 
+		--position-factor: var(--position-sm); 
+	}
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+	:root { --is-md: 1; }
+	.flex-r { --justify-factor: var(--justify-md); }
+	.hide-r { 
+		--display-factor: var(--display-md); 
+		--visibility-factor: var(--visibility-md); 
+		--position-factor: var(--position-md); 
+	}
+}
+@media (min-width: 1024px) and (max-width: 1199px) {
+	:root { --is-lg: 1; }
+	.flex-r { --justify-factor: var(--justify-lg); }
+	.hide-r { 
+		--display-factor: var(--display-lg); 
+		--visibility-factor: var(--visibility-lg); 
+		--position-factor: var(--position-lg); 
+	}
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+	:root { --is-xl: 1; }
+	.flex-r { --justify-factor: var(--justify-xl); }
+	.hide-r { 
+		--display-factor: var(--display-xl); 
+		--visibility-factor: var(--visibility-xl); 
+		--position-factor: var(--position-xl); 
+	}
+}
+@media (min-width: 1400px) {
+	:root { --is-xxl: 1; }
+	.flex-r { --justify-factor: var(--justify-xxl); }
+	.hide-r { 
+		--display-factor: var(--display-xxl); 
+		--visibility-factor: var(--visibility-xxl); 
+		--position-factor: var(--position-xxl); 
+	}
+}

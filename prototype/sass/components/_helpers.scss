@@ -1,0 +1,47 @@
+.is-primary {
+	background-color: var(--color-primary);
+	color: var(--color-text-primary);
+}
+.is-secondary {
+	background-color: var(--color-secondary);
+	color: var(--color-text-secondary);
+}
+.is-success {
+	background-color: var(--color-success);
+	color: #fff;
+}
+.is-warning {
+	background-color: var(--color-warning);
+	color: #fff;
+}
+.is-danger {
+	background-color: var(--color-danger);
+	color: #fff;
+}
+.is-fluid {
+	max-width: 100%;
+	height: auto;
+}
+.is-thumbnail {
+	position: relative;
+}
+.is-thumbnail::before {
+	content: "";
+	position: absolute;
+	inset: -8px;
+	z-index: -1;
+	border: 1px solid var(--color-surface);
+	border-radius: 4px;
+}
+.is-circle {
+	border-radius: 50%;
+}
+.hide { 
+	display: none; 
+}
+.hide-r {
+	display: var( --display-factor, var(--display, inherit ));
+	visibility: var( --visibility-factor, var(--visibility, initial ));
+	position: var( --position-factor, var(--position, inherit ));
+	left: -9999px;
+}

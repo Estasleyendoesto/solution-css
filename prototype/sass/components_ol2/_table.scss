@@ -1,0 +1,19 @@
+:root {
+	--border-collapse: separate;
+	--border-spacing: 0;
+	--table-layout: auto;
+	--caption-side: top;
+	--empty-cells: show;
+	--vertical-align: top;
+	--text-align: left;
+}
+table, .table {
+	display: table;
+	border-collapse: var(--border-collapse);
+	border-spacing: var(--border-spacing);
+	table-layout: var(--table-layout);
+	caption-side: var(--caption-side);
+	empty-cells: var(--empty-cells);
+	vertical-align: var(--vertical-align);
+	text-align: var(--text-align);
+}

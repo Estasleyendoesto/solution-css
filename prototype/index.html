@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>SolutionCSS</title>
+	<link rel="stylesheet" href="./sass/solution.scss" />
+</head>
+<body>
+	<div class="container-fluid test">
+		<h2><code>.container-fluid</code></h2>
+	</div>
+	<div class="container test">
+		<h2><code>.container</code></h2>
+	</div>
+	<div class="container test outline">
+		<div>
+			<h2><code>.xgrid</code></h2>
+			<div class="xgrid test-items">
+				<div>Element 1</div>
+				<div>Element 2</div>
+				<div>Element 3</div>
+				<div>Element 4</div>
+				<div>Element 5</div>
+			</div>
+		</div>
+		<br>
+		<div>
+			<h2><code>.xgrid-r</code></h2>
+			<p><i>1 column (Default)</i></p>
+			<div class="xgrid-r test-items">
+				<div>Element 1</div>
+			</div>
+			<p><i>12 columns (gutter 0)</i></p>
+			<div class="xgrid-r xgrid-r1 test-items">
+				<div>1</div>
+				<div>2</div>
+				<div>3</div>
+				<div>4</div>
+				<div>5</div>
+				<div>6</div>
+				<div>7</div>
+				<div>8</div>
+				<div>9</div>
+				<div>10</div>
+				<div>11</div>
+				<div>12</div>
+			</div>
+			<p><i>4 columns (xs = 2, xl = 4)</i></p>
+			<div class="xgrid-r xgrid-r2 test-items">
+				<div>Element 1</div>
+				<div>Element 2</div>
+				<div>Element 3</div>
+				<div>Element 4</div>
+			</div>
+			<p><i>3 columns</i></p>
+			<div class="xgrid-r xgrid-r3 test-items">
+				<div>Element 1</div>
+				<div>Element 2</div>
+				<div>Element 3</div>
+			</div>
+			<p><i>3 columns (dynamic span and gutter)</i></p>
+			<div class="xgrid-r xgrid-r4 test-items">
+				<div class="c-1">Element 1</div>
+				<div class="c-2">Element 2</div>
+			</div>
+		</div>
+		<br>
+		<div>
+			<h2><code>.flex</code></h2>
+			<p><i>flex-start</i></p>
+			<div class="flex test-items">
+				<div>Element 1</div>
+				<div>Element 2</div>
+				<div>Element 3</div>
+			</div>
+			<p><i>flex-end</i></p>
+			<div class="flex hbar2 test-items">
+				<div>Element 1</div>
+				<div>Element 2</div>
+				<div>Element 3</div>
+			</div>
+			<p><i>center</i></p>
+			<div class="flex hbar3 test-items">
+				<div>Element 1</div>
+				<div>Element 2</div>
+				<div>Element 3</div>
+			</div>
+			<p><i>space-between</i></p>
+			<div class="flex hbar4 test-items">
+				<div>Element 1</div>
+				<div>Element 2</div>
+				<div>Element 3</div>
+			</div>
+			<p><i>auto-fill = 1, gutter = 2.5%</i></p>
+			<div class="flex hbar5 test-items">
+				<div>Element 1</div>
+				<div>Element 2</div>
+				<div>Element 3</div>
+			</div>
+			<br>
+			<p><i>center</i></p>
+			<div class="flex hbar8 test-items">
+				<div>Element</div>
+			</div>
+			<br>
+			<h2><code>.flex-r</code></h2>
+			<p><i>justify-xs: center; justify-lg: space-between; align-content: center;</i></p>
+			<div class="flex-r hbar6 test-items">
+				<div class="c-1">Element 1</div>
+				<div class="c-2">Element 3</div>
+			</div>
+			<div class="flex-r hbar7 test-items">
+				<div class="c-1">Element 1</div>
+				<div class="c-2">Element 2</div>
+				<div class="c-3">Element 3</div>
+			</div>
+		</div>
+		<br>
+		<div>
+			<h1>This is heading 1</h1>
+			<h2>This is heading 2</h2>
+			<h3>This is heading 3</h3>
+			<h4>This is heading 4</h4>
+			<h5>This is heading 5</h5>
+			<h6>This is heading 6</h6>
+		</div>
+		<br>
+		<div>
+			<h1>The paragraph element</h1>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+				vulputate sem id neque finibus, sed condimentum neque placerat.
+				Curabitur scelerisque nisl in consequat egestas. Integer aliquam
+				posuere dolor et dignissim. Vestibulum blandit enim sed cursus
+				consequat. Cras mollis justo semper metus porta dignissim. Donec
+				venenatis convallis lacus nec vestibulum. Cras lobortis laoreet
+				dui, a consectetur enim imperdiet sed. Vestibulum ante ipsum
+				primis in faucibus orci luctus et ultrices posuere cubilia
+				curae; Donec tincidunt massa eu mauris tempor consequat.
+				Vestibulum dignissim molestie congue. Aenean auctor tortor erat,
+				congue faucibus ex vulputate ut.
+			</p>
+			<p>
+				Integer sodales id neque ac auctor. Quisque consectetur commodo
+				blandit. Aliquam id sapien dui. Aenean in nisl scelerisque
+				lectus pulvinar tincidunt vel et est. Integer vitae mollis
+				sapien. Suspendisse semper massa at tristique dignissim. Morbi
+				vestibulum iaculis nulla sit amet cursus.
+			</p>
+		</div>
+		<br>
+		<div>
+			<h1>Blockquote</h1>
+			<blockquote>
+				<p class="header">Integer sodales id neque ac auctor.</p>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					Aliquam vulputate sem id neque finibus, sed condimentum
+					neque placerat.
+				</p>
+			</blockquote>
+			<blockquote style="--text-align: center;">
+				<p class="header">Integer sodales id neque ac auctor.</p>
+				<p class="footer">Integer sodales id neque ac auctor.</p>
+			</blockquote>
+			<blockquote style="--text-align: right;">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				</p>
+				<p class="footer">Integer sodales id neque ac auctor.</p>
+			</blockquote>
+		</div>
+		<br>
+		<div>
+			<h1>Links</h1>
+			<a href="#">This is an example link</a>
+		</div>
+		<br>
+		<div>
+			<h1>Buttons</h1>
+			<a href="#" class="btn">Link Solid Button</a>
+			<a href="#" class="btn-outline">Link Outlined Button</a>
+			<a href="#" class="btn disabled">Link Disabled</a>
+			<a href="#" class="btn-outline disabled">Link Outlined Disabled</a>
+			<button class="btn">Solid Button</button>
+			<button class="btn-outline">Outlined Button</button>
+		</div>
+		<br>
+		<div>
+			<h1>Horizontal rules</h1>
+			<hr />
+		</div>
+		<br>
+		<div>
+			<h1>Lists</h1>
+			<ul>
+				<li>One</li>
+				<li>
+					Two
+					<ul>
+						<li>Twenty One</li>
+						<li>Twenty Two</li>
+					</ul>
+				</li>
+				<li>Three</li>
+			</ul>
+			<ol>
+				<li>One</li>
+				<li>Two</li>
+				<li>Three</li>
+			</ol>
+		</div>
+		<br>
+		<div>
+			<h1>Inline code</h1>
+			For example, <code>&lt;section&gt;</code> should be wrapped as
+			inline.
+		</div>
+		<br>
+		<div>
+			<h1>Code blocks</h1>
+			<pre><code>&lt;p&gt;Sample text here...&lt;/p&gt;
+&lt;p&gt;And another line of sample text here...&lt;/p&gt;
+</code></pre>
+		</div>
+		<br>
+		<div>
+			<h1>Variables</h1>
+			<var>y</var> = <var>m</var><var>x</var> + <var>b</var>
+		</div>
+		<br>
+		<div>
+			<h1>User Input</h1>
+			To switch directories, type <kbd>cd</kbd> followed by the name of
+			the directory.<br />
+			To edit settings, press <kbd><kbd>Ctrl</kbd> + <kbd>,</kbd></kbd>
+		</div>
+		<br>
+		<div>
+			<h1>Figure Image</h1>
+			<figure class="is-thumbnail">
+				<img
+					src="https://picsum.photos/260/260"
+					alt="Picsum"
+				/>
+				<figcaption>
+					A caption for the above image.
+				</figcaption>
+			</figure>
+		</div>
+		<br>
+		<div>
+			<h1>Tables</h1>
+			<div style="overflow:scroll;">
+				<table class="with-index hoverable">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Table heading</th>
+							<th>Table heading</th>
+							<th>Table heading</th>
+							<th>Table heading</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Table cell</td>
+							<td>Table cell</td>
+							<td>Table cell</td>
+							<td>Table cell</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Table cell</td>
+							<td>Table cell</td>
+							<td>Table cell</td>
+							<td>Table cell</td>
+						</tr>
+						<tr>
+							<td>9999</td>
+							<td>Table cell</td>
+							<td>Table cell</td>
+							<td>Table cell</td>
+							<td>Table cell</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<br>
+		<div>
+			<h1>Forms</h1>
+			<form>
+				<fieldset>
+					<p>
+						<input
+							type="text"
+							id="input"
+							placeholder="Example input"
+						/>
+					</p>
+					<p>
+						<input
+							type="email"
+							id="email"
+							placeholder="test@example.com"
+						/>
+					</p>
+					<p>
+						<input type="password" id="password" />
+					</p>
+					<p>
+						<input type="tel" id="tel" placeholder="+34 ..." />
+					</p>
+					<p>
+						<input type="range" id="range" min="0" max="10" />
+					</p>
+					<p>
+						<input type="file" id="file" />
+					</p>
+					<p>
+						<select id="select">
+							<option value="">Choose...</option>
+							<optgroup label="Option group 1">
+								<option value="">Option 1</option>
+								<option value="">Option 2</option>
+								<option value="">Option 3</option>
+							</optgroup>
+							<optgroup label="Option group 2">
+								<option value="">Option 4</option>
+								<option value="">Option 5</option>
+								<option value="">Option 6</option>
+							</optgroup>
+						</select>
+					</p>
+					<p>
+						<label>
+							<input type="checkbox" value="" /> Check this
+							checkbox
+						</label>
+					</p>
+					<p>
+						<label>
+							<input
+								type="radio"
+								name="optionsRadios"
+								value="option1"
+								checked=""
+							/>
+							Option one is this and that
+						</label>
+						<label>
+							<input
+								type="radio"
+								name="optionsRadios"
+								value="option2"
+							/>
+							Option two is something else
+						</label>
+						<label>
+							<input
+								type="radio"
+								name="optionsRadios"
+								value="option3"
+								disabled=""
+							/>
+							Option three is disabled
+						</label>
+					</p>
+					<p>
+						<textarea id="textarea" rows="3"></textarea>
+					</p>
+					<p>
+						<input type="date" id="date" />
+					</p>
+					<p>
+						<input type="time" id="time" />
+					</p>
+					<p>
+						<input type="color" id="color" />
+					</p>
+					<p>
+						<button class="btn" type="submit">Button submit</button>
+						<input class="btn" type="submit" value="Input submit button" />
+						<input class="btn-outline" type="reset" value="Input reset button" />
+						<input class="btn" type="button" value="Input button" />
+					</p>
+				</fieldset>
+			</form>
+		</div>
+		<br>
+		<div>
+			<h1>Helpers</h1>
+			<ul>
+				<li><code>.is-primary</code></li>
+				<li><code>.is-secondary</code></li>
+				<li><code>.is-success</code></li>
+				<li><code>.is-warning</code></li>
+				<li><code>.is-danger</code></li>
+				<li><code>.is-fluid</code></li>
+				<li><code>.is-thumbnail</code></li>
+				<li><code>.is-circle</code></li>
+				<li><code>.hide</code></li>
+				<li><code>.hide-r</code></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

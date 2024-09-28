@@ -1,0 +1,42 @@
+:root {
+	--grid-columns: 12;
+	--grid-rows: auto;
+	--grid-columns-size: 1fr;
+	--grid-rows-size: auto;
+	--grid-gap: 1.25rem;
+	--grid-template-areas: none;
+	--grid-justify-items: stretch;
+	--grid-align-items: stretch;
+
+	--grid-columns-min-size: 1%;
+
+	--grid-columns-xs: 1;
+	--grid-columns-sm: 2;
+	--grid-columns-md: 4;
+	--grid-columns-lg: 6;
+	--grid-columns-xl: 8;
+	--grid-columns-xxl: 12;
+
+	--cell-justify-self: stretch;
+	--cell-align-self: stretch;
+	--cell-column: auto;
+	--cell-row: auto;
+}
+.grid {
+	display: grid;
+	grid-template-columns: repeat(var(--grid-columns), var(--grid-columns-size));
+	grid-template-rows: repeat(var(--grid-rows), var(--grid-rows-size));
+	gap: var(--grid-gap);
+	justify-items: var(--grid-justify-items);
+	align-items: var(--grid-align-items);
+	grid-template-areas: var(--grid-template-areas);
+	
+	&:not(.-gr-fluid) {
+		> *, .cell {
+			grid-column: var(--cell-column);
+			grid-row: var(--cell-row);
+			justify-self: var(--cell-justify-self);
+			align-self: var(--cell-align-self);
+		}
+	}
+}

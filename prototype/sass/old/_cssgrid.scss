@@ -1,0 +1,49 @@
+:root {
+	--container-padding: 0.75rem;
+	--horizontal-gap: 1rem;
+}
+
+body {
+	min-width: $min-width;
+}
+
+/*
+	Struct Container
+*/
+.container {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: var(--container-padding);
+	padding-right: var(--container-padding);
+	box-sizing: border-box;
+	transition: max-width .6s ease-in-out;
+
+	@media (min-width: $min-width) { max-width: 480px; }
+	@media (min-width: $mobile) { max-width: 540px; }
+	@media (min-width: $tablet) { max-width: 720px; }
+	@media (min-width: $desktop) { max-width: 960px; }
+	@media (min-width: 1200px) { max-width: 1140px; }
+	@media (min-width: $widescreen) { max-width: 1320px; }
+}
+
+.container.-f {
+	max-width: 100% !important;
+}
+
+/*
+	Horizontal
+*/
+.horizontal {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+	gap: var(--horizontal-gap);
+
+	> * {
+		flex: 1 1 auto;
+		min-width: 100px;
+		// max-width: 100px;
+	}
+}

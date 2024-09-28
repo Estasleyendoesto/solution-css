@@ -1,0 +1,63 @@
+:root {
+	--debug-message: '';
+	--debug-background: green;
+	--debug-color: white;
+}
+
+.debug {
+	box-shadow: 0 0 1px 1px rgba(0, 0, 255, .3) !important;
+	background-color: rgba(0, 0, 200, 0.1) !important;
+	border-color: none;
+
+	&.-bug-all {
+		> * {
+			background-color: #f2f2f4 ;
+			border-color: #e1e1e1;
+			box-shadow: 0 0 1px 1px rgba(0, 0, 0, .2);
+
+			&.debug.-ignore {
+				background-color: inherit;
+				border-color: none;
+				box-shadow: none;
+
+				&::before {
+					content: '';
+				}
+			}
+
+			&::before {
+				content: var(--debug-message);
+				position: absolute;
+				top: 2px;
+				left: 2px;
+				font-family: Consolas, sans-serif;
+				z-index: 9999;
+				background: var(--debug-background);
+				border-radius: 0.2em;
+				color: var(--debug-color);
+			}
+		}
+	}
+
+	&::before {
+		content: var(--debug-message);
+		position: absolute;
+		top: 2px;
+		left: 2px;
+		font-family: Consolas, sans-serif;
+		z-index: 9999;
+		background: var(--debug-background);
+    	border-radius: 0.2em;
+		color: var(--debug-color);
+	}
+}
+
+/* RULES */
+.grid.-gr-fluid.-gr-res {
+	--debug-message: "Alert: .fluid and .screen are incompatible";
+}
+.grid.-gr-fluid {
+	> .cell {
+		--debug-message: "Alert: .grid with -fluid can't have .cell children";
+	}
+}
