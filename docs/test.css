@@ -1,8 +1,6 @@
 .test-links {
+	flex-direction: column;
 	gap: 0.5rem;
-}
-.test-links > * {
-	flex-grow: 1;
 }
 .test-box {
 	padding: 0.25rem 1rem;
@@ -10,9 +8,6 @@
 	background-color: #eee;
 	border: 1px solid #ddd;
 	user-select: none;
-}
-.test-helpers > code {
-	margin: 0.25rem 0;
 }
 .test-layout {
 	height: 128px;

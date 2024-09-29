@@ -1,5 +1,5 @@
 import './styles/main.scss'
-import './styles/test.css'
+// import './styles/test.css'
 
 /*
 import javascriptLogo from './javascript.svg'

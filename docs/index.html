@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="test.css">
   </head>
   <body>
-
     <div class="container">
       <h1>El Emperador protege</h1>
       <h2>El Emperador protege</h2>
@@ -62,7 +61,7 @@
 
       <hr class="is-dotted">
 
-      <div class="center-y test-links">
+      <div class="is-center test-links">
         <a href="/">Que el señor te guíe</a>
         <a href="/">Yo soy la luz del mundo</a>
         <a href="/">No temas, porque yo estoy contigo</a>  
@@ -70,7 +69,7 @@
 
       <hr class="is-dotted">
 
-      <div class="center-y test-links">
+      <div class="is-center test-links">
         <a href="/" class="is-btn">Link Button</a>
         <a href="/" class="is-btn is-outline">Outline Button</a>
         <button>Button</button>
@@ -79,7 +78,7 @@
 
       <hr class="is-dotted">
 
-      <div class="center-y test-links">
+      <div class="is-center test-links">
         <div class="test-box is-primary">Primary</div>
         <div class="test-box is-secondary">Secondary</div>
         <div class="test-box is-tertiary">Tertiary</div>
@@ -125,7 +124,7 @@ print(dot_product)</code></pre>
 
       <hr class="is-dotted">
 
-      <div class="center">
+      <div class="is-center">
         <figure class="is-thumbnail">
           <img src="https://picsum.photos/260/260" alt="Picsum" class="is-rounded">
           <figcaption>A caption for the above image.</figcaption>
@@ -134,7 +133,7 @@ print(dot_product)</code></pre>
 
       <hr class="is-dotted">
 
-      <div class="center">
+      <div class="is-center">
         <table class="row-hoverable first-column-bold">
           <thead>
             <tr>
@@ -185,7 +184,7 @@ print(dot_product)</code></pre>
 
       <hr class="is-dotted">
 
-      <div class="center-x">
+      <div class="is-center">
         <form action="#" method="post">
           <!-- Nombre -->
           <label for="nombre">Nombre:</label>
@@ -260,10 +259,10 @@ print(dot_product)</code></pre>
 
     <div class="text-center">
       <code class="text-center">container</code>
-      <div class="container test-layout center"></div>
+      <div class="container test-layout is-center"></div>
       <br>
       <code>container-f</code>
-      <div class="container-f test-layout center"></div>
+      <div class="container-f test-layout is-center"></div>
     </div>
     <br>
     <div class="container text-center">
@@ -325,7 +324,7 @@ print(dot_product)</code></pre>
         <div class="c2">2</div>
       </div>
       <pre class="test-grid-code"><code>{
-  --cols: 3;
+  --cells: 3;
 
   & > .c1 {
     --span: span 2;
@@ -385,7 +384,7 @@ print(dot_product)</code></pre>
     <hr class="is-dotted">
 
     <div class="container">
-      <div class="center-y test-helpers">
+      <div class="is-center test-links">
         <h1>Helpers</h1>
         <code>is-primary</code>
         <code>is-secondary</code>
@@ -401,9 +400,7 @@ print(dot_product)</code></pre>
         <code>text-justify</code>
         <code>text-center</code>
         <code>text-right</code>
-        <code>[wrapper] center-x</code>
-        <code>[wrapper] center-y</code>
-        <code>[wrapper] center</code>
+        <code>[wrapper] is-center</code>
         <code>[hr] is-dotted</code>
         <code>[table] row-hoverable</code>
         <code>[table] cell-hoverable</code>
@@ -413,7 +410,7 @@ print(dot_product)</code></pre>
 
       <hr class="is-dotted">
     
-      <div class="center-y test-helpers">
+      <div class="is-center test-links">
         <h1>:root</h1>
         <code>--primary-color</code>
         <code>--secondary-color</code>
@@ -434,7 +431,6 @@ print(dot_product)</code></pre>
         <code>--container-width</code>
         <code>--container-min-width</code>
         <code>--container-max-width</code>
-        <code>--container-xpadding</code>
       </div>
     </div>
 
