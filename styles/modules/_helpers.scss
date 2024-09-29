@@ -90,17 +90,10 @@
 .text-justify {
 	text-align: justify;
 }
-.center, .center-x, .center-y {
+.center {
 	display: flex;
 	justify-content: center;
-	align-content: center;
 	align-items: center;
-}
-.center-x {
-	flex-direction: row;
-}
-.center-y {
-	flex-direction: column;
 }
 .is-circle {
 	border-radius: 50%;
