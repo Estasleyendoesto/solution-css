@@ -5,7 +5,6 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Solution CSS</title>
-    <link rel="stylesheet" href="styles/test.css">
   </head>
   <body>
 
@@ -266,8 +265,8 @@ print(dot_product)</code></pre>
     </div>
     <br>
     <div class="container text-center">
-      <code>xgrid</code>
-      <div class="xgrid test-grid">
+      <code>grid-r</code>
+      <div class="grid-r grid-r-test-0 test-grid">
         <div>1</div>
         <div>2</div>
         <div>3</div>
@@ -278,18 +277,19 @@ print(dot_product)</code></pre>
         <div>8</div>
       </div>
       <pre class="test-grid-code"><code>{
-  --min-width: 100px;
+  --cols-min-width: 100px;
 }</code></pre>
-      <code>xgrid-r</code>
-      <div class="xgrid-r test-grid">
+      <div class="grid-r test-grid">
         <div>1</div>
         <div>2</div>
         <div>3</div>
       </div>
       <pre class="test-grid-code"><code>{
-  // 1 cell by default
+  // defaults
+  --cols-min-width: auto;
+  --cols-max-width: 1fr;
 }</code></pre>
-      <div class="xgrid-r xgrid-r-test-1 test-grid">
+      <div class="grid-r grid-r-test-1 test-grid">
         <div>1</div>
         <div>2</div>
         <div>3</div>
@@ -304,21 +304,21 @@ print(dot_product)</code></pre>
         <div>12</div>
       </div>
       <pre class="test-grid-code"><code>{
-  --cells-xs: 6;
-  --cells-md: 12;
+  --cols-xs: 6;
+  --cols-md: 12;
   column-gap: 1%;
 }</code></pre>
-      <div class="xgrid-r xgrid-r-test-2 test-grid">
+      <div class="grid-r grid-r-test-2 test-grid">
         <div>1</div>
         <div>2</div>
         <div>3</div>
         <div>4</div>
       </div>
       <pre class="test-grid-code"><code>{
-  --cells-xs: 2;
-  --cells-xl: 4;
+  --cols-xs: 2;
+  --cols-xl: 4;
 }</code></pre>
-      <div class="xgrid-r xgrid-r-test-3 test-grid">
+      <div class="grid-r grid-r-test-3 test-grid">
         <div class="c1">1</div>
         <div class="c2">2</div>
       </div>
@@ -329,44 +329,27 @@ print(dot_product)</code></pre>
     --span: span 2;
   }
 }</code></pre>
-      <div class="xgrid-r xgrid-r-test-4 test-grid">
+      <div class="grid-r grid-r-test-4 test-grid">
         <div class="c1">1</div>
         <div class="c2">2</div>
       </div>
       <pre class="test-grid-code"><code>{
-  --cells-md: 3;
+  --cols-md: 3;
 
   & > .c1 {
     --span-md: span 2;
   }
 }</code></pre>
-      <code>flex</code>
-      <div class="flex test-grid">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-      </div>
-      <pre class="test-grid-code"><code>{
-  // default
-}</code></pre>
-      <div class="flex flex-test-1 test-grid">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-      </div>
-      <pre class="test-grid-code"><code>{
-  --auto-fill: 1;
-}</code></pre>
-
     <code>flex-r</code>
     <div class="flex-r flex-test-2 test-grid">
       <div class="c1">1</div>
       <div class="c2">2</div>
     </div>
     <pre class="test-grid-code"><code>{
+  flex-wrap: wrap;
+  align-content: center;
   --justify-lg: space-between;
   --justify-xs: center;
-  align-content: center;
 
   & > .c2 {
     // --is-xs ... xxl, helpers for numeric properties
@@ -381,10 +364,11 @@ print(dot_product)</code></pre>
       <div class="c3">3</div>
     </div>
     <pre class="test-grid-code"><code>{
-  --justify-lg: space-between;
-  --justify-xs: center;
+  flex-wrap: wrap;
   align-content: center;
   align-items: baseline;
+  --justify-lg: space-between;
+  --justify-xs: center;
 
   & > .c2 {
     --margin: calc(
@@ -445,6 +429,9 @@ print(dot_product)</code></pre>
         <code>--input-bg-color</code>
         <code>--input-border-color</code>
         <code>--table-bg-color</code>
+        <code>--container-width</code>
+        <code>--container-min-width</code>
+        <code>--container-max-width</code>
       </div>
     </div>
 

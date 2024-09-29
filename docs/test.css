@@ -35,37 +35,38 @@
 	border-radius: 4px;
 	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04);
 }
-.xgrid-r-test-1 {
-	--cells-xs: 6;
-	--cells-md: 12;
+.grid-r-test-0 {
+	--cols-min-width: 100px;
+}
+.grid-r-test-1 {
+	--cols-xs: 6;
+	--cols-md: 12;
 	column-gap: 1%;
 }
-.xgrid-r-test-2 {
-	--cells-xs: 2;
-	--cells-xl: 4;
+.grid-r-test-2 {
+	--cols-xs: 2;
+	--cols-xl: 4;
 }
-.xgrid-r-test-3 {
-	--cells: 3;
+.grid-r-test-3 {
+	--cols: 3;
 }
-.xgrid-r-test-3 > .c1 {
+.grid-r-test-3 > .c1 {
 	--span: span 2;
 }
-.xgrid-r-test-4 {
-	--cells-md: 3;
+.grid-r-test-4 {
+	--cols-md: 3;
 }
-.xgrid-r-test-4 > .c1 {
+.grid-r-test-4 > .c1 {
 	--span-md: span 2;
 }
 .test-grid-code {
 	margin-bottom: 2rem;
 	text-align: left;
 }
-.flex-test-1 {
-	--auto-fill: 1;
-}
 .flex-test-2 {
 	--justify-lg: space-between;
 	--justify-xs: center;
+	flex-wrap: wrap;
 	align-content: center;
 	height: 120px;
 }
@@ -82,6 +83,7 @@
 .flex-test-3 {
 	--justify-lg: space-between;
 	--justify-xs: center;
+	flex-wrap: wrap;
 	align-content: center;
 	align-items: baseline;
 	min-height: 120px;
