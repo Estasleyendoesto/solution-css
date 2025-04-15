@@ -1,3 +1,10 @@
+.is-outline {
+	color: var(--main-text-color);
+	border-width: 1px;
+	border-style: solid;
+	border-color: var(--main-text-color) !important;
+	background-color: transparent !important;
+}
 .text-light {
 	font-weight: 300;
 }

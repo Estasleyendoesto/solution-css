@@ -100,3 +100,15 @@
 .flex-test-3 > .c3 {
 	width: 280px;
 }
+.is-dotted {
+	margin-top: 1.2rem;
+	border: none;
+	text-align: center;
+	color: var(--main-surface-color);
+}
+.is-dotted::before {
+		content: "...";
+		font-size: 3.2rem;
+		letter-spacing: 1.12rem;
+		line-height: 2rem;
+}

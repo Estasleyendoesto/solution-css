@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="test.css">
   </head>
   <body>
-    <div class="container">
+    <div class="is-container">
       <h1>El Emperador protege</h1>
       <h2>El Emperador protege</h2>
       <h3>El Emperador protege</h3>
@@ -74,20 +74,6 @@
         <a href="/" class="is-btn is-outline">Outline Button</a>
         <button>Button</button>
         <input type="button" value="Input Button">
-      </div>
-
-      <hr class="is-dotted">
-
-      <div class="is-center test-links">
-        <div class="test-box is-primary">Primary</div>
-        <div class="test-box is-secondary">Secondary</div>
-        <div class="test-box is-tertiary">Tertiary</div>
-        <div class="test-box is-info">Info</div>
-        <div class="test-box is-success">Success</div>
-        <div class="test-box is-warning">Warning</div>
-        <div class="test-box is-danger">Danger</div>
-        <div class="test-box is-outline">Outline</div>
-        <div class="test-box is-outline is-primary">Outline Primary</div>
       </div>
 
       <hr class="is-dotted">
@@ -258,16 +244,16 @@ print(dot_product)</code></pre>
     <h1 class="text-center">Layout</h1>
 
     <div class="text-center">
-      <code class="text-center">container</code>
-      <div class="container test-layout is-center"></div>
+      <code class="text-center">is-container</code>
+      <div class="is-container test-layout is-center"></div>
       <br>
-      <code>container-f</code>
-      <div class="container-f test-layout is-center"></div>
+      <code>is-container-f</code>
+      <div class="is-container-f test-layout is-center"></div>
     </div>
     <br>
-    <div class="container text-center">
-      <code>grid-r</code>
-      <div class="grid-r grid-r-test-0 test-grid">
+    <div class="is-container text-center">
+      <code>is-grid-r</code>
+      <div class="is-grid-r grid-r-test-0 test-grid">
         <div>1</div>
         <div>2</div>
         <div>3</div>
@@ -280,7 +266,7 @@ print(dot_product)</code></pre>
       <pre class="test-grid-code"><code>{
   --cols-min-width: 100px;
 }</code></pre>
-      <div class="grid-r test-grid">
+      <div class="is-grid-r test-grid">
         <div>1</div>
         <div>2</div>
         <div>3</div>
@@ -290,7 +276,7 @@ print(dot_product)</code></pre>
   --cols-min-width: auto;
   --cols-max-width: 1fr;
 }</code></pre>
-      <div class="grid-r grid-r-test-1 test-grid">
+      <div class="is-grid-r grid-r-test-1 test-grid">
         <div>1</div>
         <div>2</div>
         <div>3</div>
@@ -309,7 +295,7 @@ print(dot_product)</code></pre>
   --cols-md: 12;
   column-gap: 1%;
 }</code></pre>
-      <div class="grid-r grid-r-test-2 test-grid">
+      <div class="is-grid-r grid-r-test-2 test-grid">
         <div>1</div>
         <div>2</div>
         <div>3</div>
@@ -319,18 +305,18 @@ print(dot_product)</code></pre>
   --cols-xs: 2;
   --cols-xl: 4;
 }</code></pre>
-      <div class="grid-r grid-r-test-3 test-grid">
+      <div class="is-grid-r grid-r-test-3 test-grid">
         <div class="c1">1</div>
         <div class="c2">2</div>
       </div>
       <pre class="test-grid-code"><code>{
-  --cells: 3;
+  --cols: 3;
 
   & > .c1 {
     --span: span 2;
   }
 }</code></pre>
-      <div class="grid-r grid-r-test-4 test-grid">
+      <div class="is-grid-r grid-r-test-4 test-grid">
         <div class="c1">1</div>
         <div class="c2">2</div>
       </div>
@@ -341,57 +327,13 @@ print(dot_product)</code></pre>
     --span-md: span 2;
   }
 }</code></pre>
-    <code>flex-r</code>
-    <div class="flex-r flex-test-2 test-grid">
-      <div class="c1">1</div>
-      <div class="c2">2</div>
-    </div>
-    <pre class="test-grid-code"><code>{
-  flex-wrap: wrap;
-  align-content: center;
-  --justify-lg: space-between;
-  --justify-xs: center;
-
-  & > .c2 {
-    // --is-xs ... xxl, helpers for numeric properties
-    --margin-md: calc(15% * var(--is-md));
-    margin-left: var(--margin-md, 0);
-    margin-right: var(--margin-md, 0);
-  }
-}</code></pre>
-    <div class="flex-r flex-test-3 test-grid">
-      <div class="c1">1</div>
-      <div class="c2">2</div>
-      <div class="c3">3</div>
-    </div>
-    <pre class="test-grid-code"><code>{
-  flex-wrap: wrap;
-  align-content: center;
-  align-items: baseline;
-  --justify-lg: space-between;
-  --justify-xs: center;
-
-  & > .c2 {
-    --margin: calc(
-      (25% * var(--is-md)) +
-      (25% * var(--is-sm))
-    );
-    margin: 0 var(--margin, 0);
-  }
-}</code></pre>
     </div>
 
     <hr class="is-dotted">
 
-    <div class="container">
+    <div class="is-container">
       <div class="is-center test-links">
         <h1>Helpers</h1>
-        <code>is-primary</code>
-        <code>is-secondary</code>
-        <code>is-tertiary</code>
-        <code>is-success</code>
-        <code>is-warning</code>
-        <code>is-danger</code>
         <code>is-outline</code>
         <code>is-circle</code>
         <code>is-rounded</code>
@@ -400,12 +342,12 @@ print(dot_product)</code></pre>
         <code>text-justify</code>
         <code>text-center</code>
         <code>text-right</code>
+        <code>is-horizontal-list</code>
+        <code>is-vertical-list</code>
         <code>[wrapper] is-center</code>
-        <code>[hr] is-dotted</code>
         <code>[table] row-hoverable</code>
         <code>[table] cell-hoverable</code>
         <code>[table] first-column-bold</code>
-        <code>[a, input, button] is-btn</code>
       </div>
 
       <hr class="is-dotted">
