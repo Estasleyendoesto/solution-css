@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solution CSS - Laboratorio de Pruebas: Grids y Flex</title>
+  <link rel="stylesheet" href="solution.min.css">
+  <style>
+    /* Estilos cosméticos del laboratorio */
+    .lab-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--main-surface-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.6rem 0;
+      backdrop-filter: blur(8px);
+    }
+    .lab-nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .breakpoint-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 2rem;
+      background-color: var(--code-bg-color);
+      color: var(--main-text-color);
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+    }
+    .lab-card {
+      background-color: var(--main-surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .grid-cell {
+      padding: 0.75rem 0.5rem;
+      background-color: var(--input-bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.85rem;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s, transform 0.15s;
+    }
+    .grid-cell:hover {
+      border-color: var(--primary-color);
+    }
+    .grid-cell.highlight {
+      background-color: rgba(0, 102, 204, 0.15);
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+    .controls-panel {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      background-color: var(--main-surface-color);
+      padding: 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      margin-bottom: 1rem;
+    }
+    .controls-panel label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR DE CONTROL -->
+  <header class="lab-nav">
+    <div class="is-container lab-nav-inner">
+      <div class="is-flex" style="align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+        <strong style="font-size: 1.1rem;">🧪 Lab Grids & Flex</strong>
+        <span class="breakpoint-badge" id="screen-info">
+          <span>Breakpoint:</span> <strong id="bp-name">calculando...</strong>
+          <span style="opacity: 0.6;" id="bp-px"></span>
+        </span>
+      </div>
+
+      <div class="is-flex" style="align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+        <button type="button" id="btn-toggle-dev" class="is-outline" style="font-size: 0.8rem; padding: 0.25rem 0.65rem;" onclick="toggleDevMode()">
+          🛠️ Toggle .is-dev
+        </button>
+        <a href="index.html" class="is-btn" style="font-size: 0.8rem; padding: 0.25rem 0.65rem;">📖 Documentación</a>
+        <button type="button" id="theme-toggle-btn" onclick="toggleTheme()" title="Alternar Modo Claro / Oscuro" aria-label="Cambiar tema">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="is-container" style="padding-top: 1.5rem; padding-bottom: 4rem;">
+
+    <header style="margin-bottom: 2rem;">
+      <h1>Banco de Pruebas: Grid y Flexbox</h1>
+      <p class="text-light">Herramienta interactiva para estresar y validar los límites del motor de maquetación de <strong>Solution CSS</strong>.</p>
+    </header>
+
+    <!-- TEST 0: BANCO INTERACTIVO EN TIEMPO REAL -->
+    <section class="lab-card">
+      <h2>0. Simulador Interactivo de Parámetros</h2>
+      <p>Modifica los deslizadores para ver cómo responde <code>.is-grid-r</code> instantáneamente mediante CSS Custom Properties dinámicas.</p>
+
+      <div class="controls-panel">
+        <div>
+          <label for="ctrl-cols">Columnas (--cols): <span id="val-cols">4</span></label>
+          <input type="range" id="ctrl-cols" min="1" max="12" value="4" oninput="updateLiveGrid()">
+        </div>
+        <div>
+          <label for="ctrl-gap">Espaciado (--grid-gap): <span id="val-gap">1rem</span></label>
+          <input type="range" id="ctrl-gap" min="0" max="40" value="16" oninput="updateLiveGrid()">
+        </div>
+        <div>
+          <label for="ctrl-minwidth">Min Col Width (--cols-min-width): <span id="val-minwidth">0px</span></label>
+          <input type="range" id="ctrl-minwidth" min="0" max="300" step="10" value="0" oninput="updateLiveGrid()">
+        </div>
+        <div>
+          <label for="ctrl-place">Alineación (--place):</label>
+          <select id="ctrl-place" onchange="updateLiveGrid()">
+            <option value="auto">auto (stretch)</option>
+            <option value="center">center</option>
+            <option value="start">start</option>
+            <option value="end">end</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="live-grid" class="is-grid-r lab-grid-container" style="--cols: 4; --grid-gap: 1rem;">
+        <div class="grid-cell">Item 1</div>
+        <div class="grid-cell">Item 2</div>
+        <div class="grid-cell">Item 3</div>
+        <div class="grid-cell">Item 4</div>
+        <div class="grid-cell">Item 5</div>
+        <div class="grid-cell">Item 6</div>
+        <div class="grid-cell">Item 7</div>
+        <div class="grid-cell">Item 8</div>
+        <div class="grid-cell">Item 9</div>
+        <div class="grid-cell">Item 10</div>
+        <div class="grid-cell">Item 11</div>
+        <div class="grid-cell">Item 12</div>
+      </div>
+    </section>
+
+    <!-- TEST 1: RESPONSIVE COMPLETO EN 6 BREAKPOINTS -->
+    <section class="lab-card">
+      <h2>1. Escala Progresiva (6 Breakpoints en cascada)</h2>
+      <p>Prueba de herencia móvil-primero: <code>--cols-xs: 1</code> &rarr; <code>--cols-sm: 2</code> &rarr; <code>--cols-md: 3</code> &rarr; <code>--cols-lg: 4</code> &rarr; <code>--cols-xl: 6</code> &rarr; <code>--cols-xxl: 12</code>.</p>
+      
+      <div class="is-grid-r lab-grid-container" style="--cols-xs: 1; --cols-sm: 2; --cols-md: 3; --cols-lg: 4; --cols-xl: 6; --cols-xxl: 12;">
+        <div class="grid-cell">1</div>
+        <div class="grid-cell">2</div>
+        <div class="grid-cell">3</div>
+        <div class="grid-cell">4</div>
+        <div class="grid-cell">5</div>
+        <div class="grid-cell">6</div>
+        <div class="grid-cell">7</div>
+        <div class="grid-cell">8</div>
+        <div class="grid-cell">9</div>
+        <div class="grid-cell">10</div>
+        <div class="grid-cell">11</div>
+        <div class="grid-cell">12</div>
+      </div>
+    </section>
+
+    <!-- TEST 2: AUTO-FIT FLUIDO SIN MEDIA QUERIES -->
+    <section class="lab-card">
+      <h2>2. Auto-fit Fluido (MinMax adaptativo puro)</h2>
+      <p>Configuración: <code>--cols-min-width: 160px; --cols-max-width: 1fr;</code>. Las tarjetas se recolocan automáticamente calculando el número óptimo de columnas según el contenedor sin disparar breakpoints fijos.</p>
+
+      <div class="is-grid-r lab-grid-container" style="--cols-min-width: 160px; --cols-max-width: 1fr;">
+        <div class="grid-cell">Card A</div>
+        <div class="grid-cell">Card B</div>
+        <div class="grid-cell">Card C</div>
+        <div class="grid-cell">Card D</div>
+        <div class="grid-cell">Card E</div>
+        <div class="grid-cell">Card F</div>
+        <div class="grid-cell">Card G</div>
+        <div class="grid-cell">Card H</div>
+      </div>
+    </section>
+
+    <!-- TEST 3: SPAN Y LAYOUT ASIMÉTRICO DE DASHBOARD -->
+    <section class="lab-card">
+      <h2>3. Maquetación Asimétrica de Dashboard (Spans por dispositivo)</h2>
+      <p>Estructura: Cabecera total, Sidebar lateral adaptable, Contenido central y Widgets subordinados con <code>--span-md</code> y <code>--span-xs</code>.</p>
+
+      <div class="is-grid-r lab-grid-container" style="--cols-xs: 1; --cols-md: 4; --grid-gap: 0.75rem;">
+        <!-- Header -->
+        <div class="grid-cell highlight" style="--span-xs: span 1; --span-md: span 4; font-weight: bold;">
+          Header Nav (span completo: 4 cols)
+        </div>
+
+        <!-- Sidebar -->
+        <div class="grid-cell" style="--span-xs: span 1; --span-md: span 1; min-height: 120px;">
+          Sidebar Lateral<br>(1 col en desktop / 1 col en móvil)
+        </div>
+
+        <!-- Main Content -->
+        <div class="grid-cell" style="--span-xs: span 1; --span-md: span 2; min-height: 120px;">
+          Área Principal de Trabajo<br>(span 2 en desktop)
+        </div>
+
+        <!-- Right Widgets -->
+        <div class="grid-cell" style="--span-xs: span 1; --span-md: span 1; min-height: 120px;">
+          Panel de Widgets<br>(1 col)
+        </div>
+
+        <!-- Footer -->
+        <div class="grid-cell highlight" style="--span-xs: span 1; --span-md: span 4;">
+          Footer Status Bar (span completo: 4 cols)
+        </div>
+      </div>
+    </section>
+
+    <!-- TEST 4: GRIDS REACTIVOS ANIDADOS -->
+    <section class="lab-card">
+      <h2>4. Grids Reactivos Anidados</h2>
+      <p>Valida que un <code>.is-grid-r</code> interno dentro de una celda de otro <code>.is-grid-r</code> no contamine las variables del contenedor padre.</p>
+
+      <div class="is-grid-r lab-grid-container" style="--cols-xs: 1; --cols-md: 2; padding: 1rem; border: 1px dashed var(--border-color);">
+        <div class="grid-cell" style="flex-direction: column; align-items: stretch; padding: 1rem;">
+          <strong>Columna Izquierda con Sub-Grid (4 sub-columnas)</strong>
+          <div class="is-grid-r" style="--cols-xs: 2; --cols-sm: 4; margin-top: 0.75rem; --grid-gap: 0.4rem;">
+            <div class="grid-cell highlight">Sub 1</div>
+            <div class="grid-cell highlight">Sub 2</div>
+            <div class="grid-cell highlight">Sub 3</div>
+            <div class="grid-cell highlight">Sub 4</div>
+          </div>
+        </div>
+
+        <div class="grid-cell" style="flex-direction: column; align-items: stretch; padding: 1rem;">
+          <strong>Columna Derecha con Sub-Grid (2 sub-columnas)</strong>
+          <div class="is-grid-r" style="--cols: 2; margin-top: 0.75rem; --grid-gap: 0.4rem;">
+            <div class="grid-cell">Sub A</div>
+            <div class="grid-cell">Sub B</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEST 5: PRUEBA EXTREMA DE 24 COLUMNAS -->
+    <section class="lab-card">
+      <h2>5. Prueba Extrema: 24 Columnas de Precisión</h2>
+      <p>Evaluación matemática de redondeo de subpíxeles con <code>--cols: 24</code>.</p>
+
+      <div class="is-grid-r lab-grid-container" style="--cols: 24; --grid-gap: 2px;">
+        <!-- 24 micro celdas -->
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">1</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">2</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">3</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">4</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">5</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">6</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">7</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">8</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">9</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">10</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">11</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">12</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">13</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">14</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">15</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">16</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">17</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">18</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">19</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">20</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">21</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">22</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">23</div>
+        <div class="grid-cell" style="padding: 0.2rem; font-size: 0.65rem;">24</div>
+      </div>
+
+      <div class="is-grid-r lab-grid-container" style="--cols: 24; --grid-gap: 4px; margin-top: 0.75rem;">
+        <div class="grid-cell highlight" style="--span: span 6;">Span 6 / 24 (25%)</div>
+        <div class="grid-cell highlight" style="--span: span 12;">Span 12 / 24 (50%)</div>
+        <div class="grid-cell highlight" style="--span: span 6;">Span 6 / 24 (25%)</div>
+      </div>
+    </section>
+
+    <!-- TEST 6: COMPONENTES FLEXBOX Y HELPERS -->
+    <section class="lab-card">
+      <h2>6. Evaluación de Flexbox y Helpers</h2>
+      
+      <h3>A. Centrado Absoluto con <code>.is-center</code></h3>
+      <div class="is-center lab-grid-container" style="height: 120px; background-color: var(--code-bg-color); border: 1px dashed var(--border-color); border-radius: var(--radius);">
+        <div class="grid-cell highlight" style="padding: 0.5rem 1.5rem;">Caja centrada vertical y horizontalmente</div>
+      </div>
+
+      <h3 style="margin-top: 1.5rem;">B. Listas Flex: <code>.is-horizontal-list</code> vs <code>.is-vertical-list</code></h3>
+      <div class="is-grid-r" style="--cols-xs: 1; --cols-md: 2;">
+        <div>
+          <code>ul.is-horizontal-list</code>
+          <ul class="is-horizontal-list lab-grid-container" style="border: 1px solid var(--border-color); padding: 0.75rem; border-radius: var(--radius); margin-top: 0.5rem;">
+            <li>Elemento 1</li>
+            <li>Elemento 2</li>
+            <li>Elemento 3</li>
+            <li>Elemento 4</li>
+          </ul>
+        </div>
+        <div>
+          <code>ul.is-vertical-list</code>
+          <ul class="is-vertical-list lab-grid-container" style="border: 1px solid var(--border-color); padding: 0.75rem; border-radius: var(--radius); margin-top: 0.5rem; gap: 0.4rem;">
+            <li>Fila A</li>
+            <li>Fila B</li>
+            <li>Fila C</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 1.5rem;">C. Contenedor Fluido vs Acotado</h3>
+      <div style="background-color: var(--code-bg-color); padding: 0.75rem; border-radius: var(--radius);">
+        <div class="is-container-f lab-grid-container" style="background-color: rgba(40, 167, 69, 0.15); border: 1px solid var(--success-color); padding: 0.5rem; text-align: center; font-size: 0.85rem;">
+          <code>.is-container-f</code> (100% ancho continuo)
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="text-align: center; padding: 2rem 1rem; border-top: 1px solid var(--border-color); font-size: 0.9rem; opacity: 0.8;">
+    <p>Solution CSS Lab &bull; Test de resistencia y adaptabilidad</p>
+  </footer>
+
+  <!-- SCRIPTS DEL LABORATORIO -->
+  <script>
+    // Conmutador de tema estándar y 100% compatible
+    function toggleTheme() {
+      const root = document.documentElement;
+      const currentTheme = root.getAttribute('data-theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = currentTheme === 'dark' || (!currentTheme && systemPrefersDark);
+
+      const nextTheme = isDark ? 'light' : 'dark';
+      root.setAttribute('data-theme', nextTheme);
+
+      const icon = document.getElementById('theme-icon');
+      if (icon) {
+        icon.textContent = nextTheme === 'dark' ? '🌙' : '☀️';
+      }
+    }
+
+    // Detector de Breakpoint en tiempo real
+    function updateBreakpoint() {
+      const width = window.innerWidth;
+      const bpName = document.getElementById('bp-name');
+      const bpPx = document.getElementById('bp-px');
+      let bp = 'xs';
+
+      if (width >= 1400) bp = 'xxl';
+      else if (width >= 1200) bp = 'xl';
+      else if (width >= 1024) bp = 'lg';
+      else if (width >= 768) bp = 'md';
+      else if (width >= 576) bp = 'sm';
+
+      if (bpName) bpName.textContent = bp.toUpperCase();
+      if (bpPx) bpPx.textContent = `(${width}px)`;
+    }
+
+    // Toggle de modo inspector visual (.is-dev / .is-dev-c)
+    let devModeActive = false;
+    function toggleDevMode() {
+      devModeActive = !devModeActive;
+      const containers = document.querySelectorAll('.lab-grid-container');
+      containers.forEach(el => {
+        if (devModeActive) {
+          el.classList.add('is-dev-c');
+        } else {
+          el.classList.remove('is-dev-c');
+        }
+      });
+      const btn = document.getElementById('btn-toggle-dev');
+      if (btn) {
+        btn.textContent = devModeActive ? '✅ Dev Mode ON' : '🛠️ Toggle .is-dev';
+      }
+    }
+
+    // Actualizador en vivo del grid interactivo (Test 0)
+    function updateLiveGrid() {
+      const grid = document.getElementById('live-grid');
+      const cols = document.getElementById('ctrl-cols').value;
+      const gap = document.getElementById('ctrl-gap').value;
+      const minwidth = document.getElementById('ctrl-minwidth').value;
+      const place = document.getElementById('ctrl-place').value;
+
+      document.getElementById('val-cols').textContent = cols;
+      document.getElementById('val-gap').textContent = gap + 'px';
+      document.getElementById('val-minwidth').textContent = minwidth + 'px';
+
+      grid.style.setProperty('--cols', cols);
+      grid.style.setProperty('--grid-gap', gap + 'px');
+      grid.style.setProperty('--cols-min-width', minwidth === '0' ? 'auto' : minwidth + 'px');
+      grid.style.setProperty('--place', place);
+    }
+
+    // Inicialización al cargar la página
+    window.addEventListener('DOMContentLoaded', () => {
+      const root = document.documentElement;
+      const currentTheme = root.getAttribute('data-theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = currentTheme === 'dark' || (!currentTheme && systemPrefersDark);
+      const icon = document.getElementById('theme-icon');
+      if (icon) {
+        icon.textContent = isDark ? '🌙' : '☀️';
+      }
+
+      updateBreakpoint();
+    });
+
+    window.addEventListener('resize', updateBreakpoint);
+  </script>
+</body>
+</html>

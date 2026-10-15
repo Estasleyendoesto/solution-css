@@ -1,0 +1,13 @@
+{
+  "name": "solution-css",
+  "version": "2.0.0",
+  "description": "Framework CSS ultraligero con grid reactivo y sistema de variables semánticas",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run dev.js",
+    "build": "bun run build.js"
+  },
+  "devDependencies": {
+    "lightningcss": "^1.33.0"
+  }
+}
