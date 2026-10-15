@@ -1,132 +1,139 @@
 # Solution CSS
 
-> Framework CSS ultraligero, modular y de alto rendimiento basado en variables semánticas, rejilla reactiva por cascada y diseño adaptativo sin dependencias de runtime.
-
-[![Tamaño Minificado](https://img.shields.io/badge/size-9.5_KB-blue.svg)](solution.min.css)
-[![Entorno Bun](https://img.shields.io/badge/runtime-Bun_1.4+-black.svg)](https://bun.sh)
-[![Compilador](https://img.shields.io/badge/compiler-LightningCSS-orange.svg)](https://lightningcss.dev)
-[![Licencia](https://img.shields.io/badge/license-MIT-green.svg)](#)
+A class-light CSS micro-framework with a cascade-reactive grid and zero-runtime theming. Under 10 KB minified.
 
 ---
 
-## 🚀 Características Principales
+## Overview
 
-* **Rejilla Reactiva Declarativa (`.is-grid-r`)**: Configura columnas y expansiones por breakpoint directamente mediante Custom Properties CSS (`--cols-xs`, `--cols-md`, `--span-lg`), sin generar cientos de clases utilitarias.
-* **Modo Oscuro / Claro 100% Compatible**: Integración nativa con `prefers-color-scheme` y control manual instantáneo con `[data-theme="dark"]` / `[data-theme="light"]`, sin parpadeos ni funciones experimentales.
-* **Contenedor Fluido Moderno (`.is-container`)**: Centrado automático inteligente con cálculo `width: min(...)` de última generación.
-* **Estilizado Nativo Accesible**: Soporte listo para usar en componentes HTML5 modernos: `<dialog>`, `<details>`, `<progress>`, `<figure>`, estados `:focus-visible` y validación `user-invalid`.
-* **Herramientas de Depuración Visual (`.is-dev`)**: Inspección visual no intrusiva con `box-shadow` que no altera el cálculo de la caja ni el flujo del DOM.
-* **Entorno Ultrarrápido con Bun**: Servidor de desarrollo con **Hot Swap de CSS en caliente** y compilación en **< 2 milisegundos** con LightningCSS.
+Most modern CSS setups force you to choose between two extremes: heavy design systems that ship hundreds of kilobytes of unused styles, or utility-first engines that bloat your markup with dozens of classes just to align three cards.
 
----
-
-## 📁 Estructura del Repositorio
-
-```text
-solucion-css/
-├── solution.css       # Código fuente modular con variables y utilidades
-├── solution.min.css   # Versión minificada para producción (~9.5 KB)
-├── index.html         # Documentación interactiva y catálogo de componentes
-├── test.html          # Laboratorio de pruebas de estrés para Grid y Flex
-├── dev.js             # Servidor de desarrollo Bun con Hot Reload en vivo
-├── build.js           # Script de compilación ultrarrápido con LightningCSS
-├── package.json       # Configuración y scripts de ejecución
-└── .gitignore         # Exclusiones de Git
-```
+Solution CSS takes a different approach:
+* **HTML-first:** sensible, clean defaults for standard elements (`<dialog>`, `<details>`, `<form>`, `<table>`, `<blockquote>`).
+* **Cascade-reactive grid:** responsive layouts driven by CSS custom properties, not generated utility classes.
+* **Standards-compliant theming:** automatic dark mode via `prefers-color-scheme`, manual override via `[data-theme]`, and zero reliance on experimental browser features.
+* **Tiny footprint:** ~9.5 KB uncompressed, ~2.8 KB gzipped.
 
 ---
 
-## 🛠️ Instalación y Flujo de Trabajo
+## Live Demo & Documentation
 
-### Requisitos previos
-* [Bun](https://bun.sh) (v1.0 o superior).
+A full interactive showcase and stress-test lab are hosted directly on GitHub Pages:
 
-### 1. Instalar dependencias de desarrollo
-```bash
-bun install
-```
-
-### 2. Iniciar servidor de desarrollo (con Live Reload)
-```bash
-bun run dev
-```
-Iniciará el servidor local en `http://localhost:3000`:
-* 📖 **Documentación**: [http://localhost:3000/index.html](http://localhost:3000/index.html)
-* 🧪 **Laboratorio de Grids & Flex**: [http://localhost:3000/test.html](http://localhost:3000/test.html)
-
-*Al editar `solution.css`, el archivo se recompila en ~2 ms y se actualiza en el navegador al instante sin recargar la página.*
-
-### 3. Compilar para producción
-```bash
-bun run build
-```
-Genera `solution.min.css` optimizado y validado mediante LightningCSS.
+* **Docs & Component Showcase:** [https://YOUR_USER.github.io/solucion-css/](https://YOUR_USER.github.io/solucion-css/)
+* **Grid & Flex Testing Lab:** [https://YOUR_USER.github.io/solucion-css/test.html](https://YOUR_USER.github.io/solucion-css/test.html)
 
 ---
 
-## 📖 Guía Rápida de Uso
+## Quick Start
 
-### 1. Rejilla Reactiva (`.is-grid-r`)
-
-Define el comportamiento de las columnas directamente en línea o mediante reglas CSS:
+Link the minified stylesheet inside your `<head>`:
 
 ```html
-<!-- Grid que escala: 1 col (móvil) -> 2 cols (tablet) -> 4 cols (desktop) -->
-<div class="is-grid-r" style="--cols-xs: 1; --cols-md: 2; --cols-lg: 4;">
-  <div>Elemento 1</div>
-  <div>Elemento 2</div>
-  <div>Elemento 3</div>
-  <div>Elemento 4</div>
-</div>
-
-<!-- Columna destacada con span responsivo -->
-<div class="is-grid-r" style="--cols-xs: 1; --cols-md: 3;">
-  <div style="--span-md: span 2;">Contenido Principal (2 cols en desktop)</div>
-  <div>Barra lateral (1 col)</div>
-</div>
+<link rel="stylesheet" href="solution.min.css">
 ```
 
-#### Breakpoints Soportados
-| Breakpoint | Ancho Mínimo | Variable de Columnas | Variable de Span |
-| :--- | :--- | :--- | :--- |
-| **XS** | `0px` | `--cols-xs` | `--span-xs` |
-| **SM** | `576px` | `--cols-sm` | `--span-sm` |
-| **MD** | `768px` | `--cols-md` | `--span-md` |
-| **LG** | `1024px` | `--cols-lg` | `--span-lg` |
-| **XL** | `1200px` | `--cols-xl` | `--span-xl` |
-| **XXL** | `1400px` | `--cols-xxl` | `--span-xxl` |
+Or clone the repository to run locally:
+
+```bash
+bun install
+bun run dev
+```
 
 ---
 
-### 2. Conmutador de Modo Oscuro / Claro
+## The Reactive Grid (`.is-grid-r`)
 
-El framework aplica modo oscuro automáticamente si el sistema operativo lo prefiere. Si deseas alternarlo manualmente mediante un botón:
+Instead of defining responsive columns through class cascades (`.col-12 .col-md-6 .col-lg-4`), `.is-grid-r` delegates column math directly to CSS custom properties. Child breakpoints inherit from parent breakpoints automatically.
+
+### Basic example
+
+```html
+<!-- Scales from 1 column on mobile to 2 on tablet and 4 on desktop -->
+<div class="is-grid-r" style="--cols-xs: 1; --cols-md: 2; --cols-lg: 4;">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+  <div>Item 4</div>
+</div>
+```
+
+### Asymmetrical spans
+
+```html
+<div class="is-grid-r" style="--cols-xs: 1; --cols-md: 3;">
+  <div style="--span-md: span 2;">Main content (spans 2 columns on desktop)</div>
+  <div>Sidebar (1 column)</div>
+</div>
+```
+
+### Breakpoints Reference
+
+| Breakpoint | Min-width | Column variable | Span variable |
+| :--- | :--- | :--- | :--- |
+| `xs` | `0px` | `--cols-xs` | `--span-xs` |
+| `sm` | `576px` | `--cols-sm` | `--span-sm` |
+| `md` | `768px` | `--cols-md` | `--span-md` |
+| `lg` | `1024px` | `--cols-lg` | `--span-lg` |
+| `xl` | `1200px` | `--cols-xl` | `--span-xl` |
+| `xxl` | `1400px` | `--cols-xxl` | `--span-xxl` |
+
+### Fluid auto-fit (no media queries needed)
+
+```html
+<div class="is-grid-r" style="--cols-min-width: 180px; --cols-max-width: 1fr;">
+  <div>Card A</div>
+  <div>Card B</div>
+  <div>Card C</div>
+</div>
+```
+
+---
+
+## Theming
+
+Solution CSS uses direct custom property re-assignment. It avoids buggy transitions and ensures complete compatibility across older browsers and embedded WebViews.
+
+* **Default:** Light mode defined under `:root`.
+* **Automatic dark mode:** Triggered via `@media (prefers-color-scheme: dark)` unless `[data-theme="light"]` is explicitly present.
+* **Manual toggle:** Handled by setting `data-theme="dark"` or `data-theme="light"` on `document.documentElement`.
+
+### Minimal theme toggle script
 
 ```javascript
 function toggleTheme() {
   const root = document.documentElement;
-  const currentTheme = root.getAttribute('data-theme');
+  const current = root.getAttribute('data-theme');
   const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const isDark = currentTheme === 'dark' || (!currentTheme && systemPrefersDark);
+  const isDark = current === 'dark' || (!current && systemPrefersDark);
 
-  const nextTheme = isDark ? 'light' : 'dark';
-  root.setAttribute('data-theme', nextTheme);
+  root.setAttribute('data-theme', isDark ? 'light' : 'dark');
 }
 ```
 
 ---
 
-### 3. Clases y Utilidades Frecuentes
+## Key Utilities
 
-* **Estructura**: `.is-container`, `.is-container-f`.
-* **Flexbox**: `.is-flex`, `.is-center`, `.is-horizontal-list`, `.is-vertical-list`.
-* **Botones**: `.is-btn`, `.is-btn.is-outline`, `.is-primary`, `.is-rounded`.
-* **Tablas**: `.is-table-scroll`, `table.row-hoverable`, `table.first-column-bold`.
-* **Depuración**: `.is-dev` (caja actual), `.is-dev-c` (caja e hijos).
-* **Tipografía**: `.text-light`, `.text-bold`, `.text-center`, `.text-right`, `.text-justify`.
+* **Layout:** `.is-container`, `.is-container-f`
+* **Flex helpers:** `.is-center`, `.is-horizontal-list`, `.is-vertical-list`
+* **Buttons:** `.is-btn`, `.is-outline`, `.is-primary`, `.is-rounded`
+* **Tables:** `.is-table-scroll`, `table.row-hoverable`, `table.first-column-bold`
+* **Inspection:** `.is-dev` (highlights container bounding box via non-intrusive box-shadow)
 
 ---
 
-## 📄 Licencia
+## Development
 
-Código abierto bajo licencia MIT.
+Built and compiled using [Bun](https://bun.sh) and [LightningCSS](https://lightningcss.dev).
+
+```bash
+bun run dev    # Local development server with instant hot-reload
+bun run build  # Minifies solution.css into solution.min.css (root and docs/)
+```
+
+---
+
+## License
+
+MIT
