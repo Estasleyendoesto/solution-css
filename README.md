@@ -20,8 +20,8 @@ Solution CSS takes a different approach:
 
 A full interactive showcase and stress-test lab are hosted directly on GitHub Pages:
 
-* **Docs & Component Showcase:** [https://YOUR_USER.github.io/solucion-css/](https://YOUR_USER.github.io/solucion-css/)
-* **Grid & Flex Testing Lab:** [https://YOUR_USER.github.io/solucion-css/test.html](https://YOUR_USER.github.io/solucion-css/test.html)
+* **Docs & Component Showcase:** [https://estasleyendoesto.github.io/solucion-css/](https://estasleyendoesto.github.io/solucion-css/)
+* **Grid & Flex Testing Lab:** [https://estasleyendoesto.github.io/solucion-css/test.html](https://estasleyendoesto.github.io/solucion-css/test.html)
 
 ---
 
