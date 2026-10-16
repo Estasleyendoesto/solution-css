@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/* 1. RESET Y TEMA UNIFICADO (Sin duplicar variables) */
+/* 1. RESET Y TEMA UNIFICADO */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -25,30 +25,26 @@
   --danger-color: #dc3545;
   --info-color: #007bff;
 
-  /* Botones e Inputs */
+  /* Botones, Inputs, Código y Tablas (heredan por cascada cuando aplica) */
   --btn-bg-color: #e9ecef;
-  --btn-text-color: #212529;
+  --btn-text-color: var(--main-text-color);
   --btn-border-color: #ced4da;
   --input-bg-color: #ffffff;
-  --input-border-color: #ced4da;
-
-  /* Código y Tablas */
+  --input-border-color: var(--btn-border-color);
   --code-bg-color: #f1f3f5;
   --code-color: #c92a2a;
-  --pre-bg-color: #f8f9fa;
+  --pre-bg-color: var(--main-surface-color);
   --table-bg-color: var(--main-surface-color);
   --table-border-color: var(--border-color);
 
   /* Layout y Dimensiones */
-  --container-width: 100%;
-  --container-min-width: 320px;
   --container-xpadding: 1rem;
   --container-max-width: 1320px;
   --grid-gap: 1rem;
   --radius: 0.35rem;
 }
 
-/* Modo oscuro automático por sistema operativo (si el usuario no forzó 'light') */
+/* Modo oscuro automático por sistema operativo (si no se forzó 'light') */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
@@ -57,15 +53,10 @@
     --main-surface-color: #202124;
     --border-color: #343a40;
     --btn-bg-color: #2d3135;
-    --btn-text-color: #f8f9fa;
     --btn-border-color: #495057;
     --input-bg-color: #1e1e20;
-    --input-border-color: #495057;
     --code-bg-color: #2b2b2b;
     --code-color: #ff8787;
-    --pre-bg-color: #202124;
-    --table-bg-color: #202124;
-    --table-border-color: #343a40;
   }
 }
 
@@ -77,15 +68,10 @@
   --main-surface-color: #202124;
   --border-color: #343a40;
   --btn-bg-color: #2d3135;
-  --btn-text-color: #f8f9fa;
   --btn-border-color: #495057;
   --input-bg-color: #1e1e20;
-  --input-border-color: #495057;
   --code-bg-color: #2b2b2b;
   --code-color: #ff8787;
-  --pre-bg-color: #202124;
-  --table-bg-color: #202124;
-  --table-border-color: #343a40;
 }
 
 /* Modo claro forzado manualmente vía JavaScript */
@@ -124,11 +110,11 @@ a { color: var(--primary-color); text-decoration: underline; text-underline-offs
 a:hover { filter: brightness(1.15); }
 
 hr { margin: 1.5rem auto; border: 0; border-top: 1px solid var(--border-color); }
-hr.is-dotted, .is-dotted { border-top-style: dotted !important; }
+.is-dotted { border-top-style: dotted !important; }
 img, video { display: block; max-width: 100%; height: auto; }
 figure { display: inline-block; margin: 1rem 0; }
 figure > figcaption { font-size: 0.9rem; font-style: italic; opacity: 0.8; margin-top: 0.25rem; }
-.is-thumbnail { display: inline-block; padding: 0.35rem; background-color: var(--main-surface-color); border: 1px solid var(--border-color); border-radius: var(--radius); }
+.is-thumbnail { display: inline-block; padding: 0.35rem; }
 
 code, kbd, var { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 0.9em; }
 code, kbd { padding: 0.15em 0.4em; border-radius: 0.25rem; background-color: var(--code-bg-color); color: var(--code-color); }
@@ -148,24 +134,24 @@ var { font-style: italic; }
   pointer-events: none;
 }
 
-[aria-invalid="true"], input:user-invalid, select:user-invalid, textarea:user-invalid {
+[aria-invalid="true"], :is(input, select, textarea):user-invalid {
   border-color: var(--danger-color) !important;
   outline-color: var(--danger-color);
 }
 
 /* 4. SUPERFICIES Y COMPONENTES NATIVOS (Cards, Dialog, Details, Progress) */
-article, .is-card {
+article, .is-card, details, .is-thumbnail {
   background-color: var(--main-surface-color);
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
+}
+
+article, .is-card {
   padding: 1.25rem;
   margin: 1rem 0;
 }
 
 details {
-  background-color: var(--main-surface-color);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius);
   padding: 0.6rem 1rem;
   margin: 0.75rem 0;
 }
@@ -203,7 +189,7 @@ progress {
 }
 
 /* 5. BOTONES */
-button, .is-btn, input[type="button"], input[type="submit"], input[type="reset"] {
+button, .is-btn, input:is([type="button"], [type="submit"], [type="reset"]) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -217,8 +203,8 @@ button, .is-btn, input[type="button"], input[type="submit"], input[type="reset"]
   border: 1px solid var(--btn-border-color);
   transition: filter 0.15s ease;
 }
-button:hover, .is-btn:hover, input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover { filter: brightness(0.95); }
-button:active, .is-btn:active, input[type="button"]:active, input[type="submit"]:active, input[type="reset"]:active { filter: brightness(0.9); }
+:is(button, .is-btn, input:is([type="button"], [type="submit"], [type="reset"])):hover { filter: brightness(0.95); }
+:is(button, .is-btn, input:is([type="button"], [type="submit"], [type="reset"])):active { filter: brightness(0.9); }
 
 .is-primary {
   background-color: var(--primary-color);
@@ -227,17 +213,17 @@ button:active, .is-btn:active, input[type="button"]:active, input[type="submit"]
 }
 
 /* 6. FORMULARIOS Y CONTROLES MODERNOS */
-input[type="checkbox"], input[type="radio"], input[type="range"] {
+input:is([type="checkbox"], [type="radio"], [type="range"]) {
   accent-color: var(--primary-color);
   cursor: pointer;
 }
-input[type="checkbox"], input[type="radio"] {
+input:is([type="checkbox"], [type="radio"]) {
   width: 1rem;
   height: 1rem;
   vertical-align: -0.15em;
 }
 
-form input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="range"]),
+form input:not([type="checkbox"], [type="radio"], [type="button"], [type="submit"], [type="reset"], [type="range"]),
 form select, form textarea {
   display: block;
   width: 100%;
@@ -252,7 +238,7 @@ form select, form textarea {
 form select { cursor: pointer; }
 form textarea { min-width: 100%; resize: vertical; }
 form input[type="range"] { display: block; width: 100%; margin: 0.5rem 0; }
-form input[type="file"]::file-selector-button {
+::file-selector-button {
   font: inherit;
   border: 1px solid var(--btn-border-color);
   background-color: var(--btn-bg-color);
@@ -298,6 +284,7 @@ table.row-hoverable tbody > tr:hover, table.cell-hoverable tbody td:hover { back
   --cols-lg: var(--cols-md);
   --cols-xl: var(--cols-lg);
   --cols-xxl: var(--cols-xl);
+  --cols: var(--cols-xs);
   grid-template-columns: repeat(var(--cols, auto-fit), minmax(var(--cols-min-width, 0), var(--cols-max-width, 1fr)));
 }
 .is-grid-r > * {
@@ -306,16 +293,17 @@ table.row-hoverable tbody > tr:hover, table.cell-hoverable tbody td:hover { back
   --span-lg: var(--span-md);
   --span-xl: var(--span-lg);
   --span-xxl: var(--span-xl);
+  --span: var(--span-xs);
   grid-column: var(--span, auto);
   --place-sm: var(--place-xs);
   --place-md: var(--place-sm);
   --place-lg: var(--place-md);
   --place-xl: var(--place-lg);
   --place-xxl: var(--place-xl);
+  --place: var(--place-xs);
   place-self: var(--place, auto);
 }
 
-@media (min-width: 0px)    { .is-grid-r { --cols: var(--cols-xs); } .is-grid-r > * { --span: var(--span-xs); --place: var(--place-xs); } }
 @media (min-width: 576px)  { .is-grid-r { --cols: var(--cols-sm); } .is-grid-r > * { --span: var(--span-sm); --place: var(--place-sm); } }
 @media (min-width: 768px)  { .is-grid-r { --cols: var(--cols-md); } .is-grid-r > * { --span: var(--span-md); --place: var(--place-md); } }
 @media (min-width: 1024px) { .is-grid-r { --cols: var(--cols-lg); } .is-grid-r > * { --span: var(--span-lg); --place: var(--place-lg); } }
@@ -337,8 +325,8 @@ table.row-hoverable tbody > tr:hover, table.cell-hoverable tbody td:hover { back
 .is-flex { display: flex; }
 .is-grid { display: grid; }
 .is-block { display: block; }
-.is-vertical-list { display: flex; flex-direction: column; }
-.is-horizontal-list { display: flex; flex-wrap: nowrap; justify-content: space-around; align-items: center; }
-ul.is-vertical-list, ul.is-horizontal-list { margin-left: 0; list-style: none; }
+.is-vertical-list, .is-horizontal-list { display: flex; margin-left: 0; list-style: none; }
+.is-vertical-list { flex-direction: column; }
+.is-horizontal-list { justify-content: space-around; align-items: center; }
 .is-dev, .is-dev-c { box-shadow: 0 0 0 1px #0000ff80 !important; background-color: rgba(0, 0, 200, 0.08) !important; border: none !important; }
 .is-dev-c > *, .is-dev-children > * { background-color: rgba(0, 0, 0, 0.04); box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15); }
