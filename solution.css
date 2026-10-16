@@ -9,6 +9,7 @@
 
 :root {
   color-scheme: light;
+  accent-color: var(--primary-color);
 
   /* Variables base (Tema Claro) */
   --main-text-color: #213547;
@@ -102,24 +103,32 @@ p + p { margin-top: 1rem; }
 ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; }
 ul ul, ol ol { margin-bottom: 0; }
 
-blockquote { border-left: 3px solid var(--secondary-color); padding-left: 1rem; margin: 1rem 0; }
-blockquote cite { font-size: 0.938rem; opacity: 0.85; }
-blockquote cite::before { content: "— "; }
+blockquote {
+  border-left: 3px solid var(--secondary-color);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  & cite { font-size: 0.938rem; opacity: 0.85; &::before { content: "— "; } }
+}
 
-a { color: var(--primary-color); text-decoration: underline; text-underline-offset: 2px; }
-a:hover { filter: brightness(1.15); }
+a { color: var(--primary-color); text-decoration: underline; text-underline-offset: 2px; &:hover { filter: brightness(1.15); } }
 
 hr { margin: 1.5rem auto; border: 0; border-top: 1px solid var(--border-color); }
 .is-dotted { border-top-style: dotted !important; }
 img, video { display: block; max-width: 100%; height: auto; }
-figure { display: inline-block; margin: 1rem 0; }
-figure > figcaption { font-size: 0.9rem; font-style: italic; opacity: 0.8; margin-top: 0.25rem; }
+figure { display: inline-block; margin: 1rem 0; & > figcaption { font-size: 0.9rem; font-style: italic; opacity: 0.8; margin-top: 0.25rem; } }
 .is-thumbnail { display: inline-block; padding: 0.35rem; }
 
 code, kbd, var { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 0.9em; }
 code, kbd { padding: 0.15em 0.4em; border-radius: 0.25rem; background-color: var(--code-bg-color); color: var(--code-color); }
-pre { padding: 0.75rem 1rem; background-color: var(--pre-bg-color); border: 1px solid var(--border-color); border-radius: var(--radius); overflow-x: auto; margin: 1rem 0; }
-pre > code { padding: 0; color: var(--main-text-color); background-color: transparent; }
+pre {
+  padding: 0.75rem 1rem;
+  background-color: var(--pre-bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  overflow-x: auto;
+  margin: 1rem 0;
+  & > code { padding: 0; color: var(--main-text-color); background-color: transparent; }
+}
 var { font-style: italic; }
 
 /* 3. ACCESIBILIDAD Y ESTADOS GLOBALES (:focus-visible, :disabled, aria-invalid) */
@@ -140,31 +149,16 @@ var { font-style: italic; }
 }
 
 /* 4. SUPERFICIES Y COMPONENTES NATIVOS (Cards, Dialog, Details, Progress) */
-article, .is-card, details, .is-thumbnail {
+article, .is-card, details, .is-thumbnail, fieldset {
   background-color: var(--main-surface-color);
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
 }
-
-article, .is-card {
-  padding: 1.25rem;
-  margin: 1rem 0;
-}
-
-details {
-  padding: 0.6rem 1rem;
-  margin: 0.75rem 0;
-}
-summary {
-  font-weight: 600;
-  cursor: pointer;
-  user-select: none;
-}
-details[open] summary {
-  margin-bottom: 0.6rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border-color);
-}
+article, .is-card { padding: 1.25rem; margin: 1rem 0; }
+details, fieldset { padding: 0.6rem 1rem; margin: 0.75rem 0; }
+summary, legend { font-weight: 600; }
+summary { cursor: pointer; user-select: none; }
+details[open] summary { margin-bottom: 0.6rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-color); }
 
 dialog {
   margin: auto;
@@ -176,20 +170,13 @@ dialog {
   max-width: min(90vw, 500px);
   width: 100%;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-}
-dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(2px);
+  &::backdrop { background-color: rgba(0, 0, 0, 0.55); backdrop-filter: blur(2px); }
 }
 
-progress {
-  width: 100%;
-  height: 0.6rem;
-  accent-color: var(--primary-color);
-}
+progress { width: 100%; height: 0.6rem; }
 
 /* 5. BOTONES */
-button, .is-btn, input:is([type="button"], [type="submit"], [type="reset"]) {
+:is(button, .is-btn, input:is([type="button"], [type="submit"], [type="reset"])) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -202,42 +189,35 @@ button, .is-btn, input:is([type="button"], [type="submit"], [type="reset"]) {
   color: var(--btn-text-color);
   border: 1px solid var(--btn-border-color);
   transition: filter 0.15s ease;
+  &:hover { filter: brightness(0.95); }
+  &:active { filter: brightness(0.9); }
 }
-:is(button, .is-btn, input:is([type="button"], [type="submit"], [type="reset"])):hover { filter: brightness(0.95); }
-:is(button, .is-btn, input:is([type="button"], [type="submit"], [type="reset"])):active { filter: brightness(0.9); }
 
-.is-primary {
-  background-color: var(--primary-color);
-  color: #ffffff;
-  border-color: var(--primary-color);
-}
+.is-primary { background-color: var(--primary-color); color: #ffffff; border-color: var(--primary-color); }
 
 /* 6. FORMULARIOS Y CONTROLES MODERNOS */
-input:is([type="checkbox"], [type="radio"], [type="range"]) {
-  accent-color: var(--primary-color);
-  cursor: pointer;
-}
-input:is([type="checkbox"], [type="radio"]) {
-  width: 1rem;
-  height: 1rem;
-  vertical-align: -0.15em;
-}
+legend { padding: 0 0.4rem; }
+label, select, input:is([type="checkbox"], [type="radio"], [type="range"], [type="color"]) { cursor: pointer; }
+label { display: inline-block; }
+input:is([type="checkbox"], [type="radio"]) { width: 1rem; height: 1rem; vertical-align: -0.15em; }
 
-form input:not([type="checkbox"], [type="radio"], [type="button"], [type="submit"], [type="reset"], [type="range"]),
-form select, form textarea {
+input:not([type="checkbox"], [type="radio"], [type="button"], [type="submit"], [type="reset"], [type="range"]),
+select, textarea {
   display: block;
   width: 100%;
-  margin: 0.35rem 0 0.85rem;
-  padding: 0.45rem 0.65rem;
+  margin: 0.25rem 0 0.75rem;
+  padding: 0.4rem 0.65rem;
   font: inherit;
   color: var(--main-text-color);
   background-color: var(--input-bg-color);
   border: 1px solid var(--input-border-color);
   border-radius: var(--radius);
+  &:focus-visible { border-color: var(--primary-color); outline-offset: 0; }
 }
-form select { cursor: pointer; }
-form textarea { min-width: 100%; resize: vertical; }
-form input[type="range"] { display: block; width: 100%; margin: 0.5rem 0; }
+::placeholder { color: inherit; opacity: 0.5; }
+textarea { resize: vertical; }
+input[type="color"] { height: 2.25rem; padding: 0.2rem; }
+input[type="range"] { display: block; width: 100%; margin: 0.4rem 0; }
 ::file-selector-button {
   font: inherit;
   border: 1px solid var(--btn-border-color);
@@ -249,19 +229,34 @@ form input[type="range"] { display: block; width: 100%; margin: 0.5rem 0; }
   margin-right: 0.5rem;
 }
 
-form.is-search { display: flex; align-items: stretch; border: 1px solid var(--input-border-color); border-radius: var(--radius); overflow: hidden; background-color: var(--input-bg-color); }
-form.is-search > * { margin: 0; border: none; background-color: transparent; color: var(--main-text-color); }
-form.is-search input[type="search"] { flex: 1; padding: 0.45rem 0.65rem; outline: none; }
-form.is-search input[type="search"]::-webkit-search-cancel-button,
-form.is-search input[type="search"]::-webkit-search-decoration { display: none; -webkit-appearance: none; }
-form.is-search button { border-radius: 0; border-left: 1px solid var(--input-border-color); background-color: var(--btn-bg-color); }
+.is-search {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--input-border-color);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background-color: var(--input-bg-color);
+  &:focus-within { border-color: var(--primary-color); }
+  & > * { margin: 0; border: none; background-color: transparent; color: var(--main-text-color); }
+  & input[type="search"] {
+    flex: 1;
+    padding: 0.4rem 0.65rem;
+    outline: none;
+    &::-webkit-search-cancel-button, &::-webkit-search-decoration { display: none; -webkit-appearance: none; }
+  }
+  & button { border-radius: 0; border-left: 1px solid var(--input-border-color); background-color: var(--btn-bg-color); }
+}
 
 /* 7. TABLAS */
-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-table th, table td { border: 1px solid var(--table-border-color); padding: 0.5rem 0.75rem; text-align: left; }
-table th { background-color: var(--table-bg-color); font-weight: 600; }
-table.first-column-bold td:first-child { font-weight: 700; }
-table.row-hoverable tbody > tr:hover, table.cell-hoverable tbody td:hover { background-color: var(--table-bg-color); }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  & th, & td { border: 1px solid var(--table-border-color); padding: 0.5rem 0.75rem; text-align: left; }
+  & th { background-color: var(--table-bg-color); font-weight: 600; }
+  &.first-column-bold td:first-child { font-weight: 700; }
+  &.row-hoverable tbody > tr:hover, &.cell-hoverable tbody td:hover { background-color: var(--table-bg-color); }
+}
 .is-table-scroll { overflow-x: auto; width: 100%; }
 
 /* 8. LAYOUT Y GRID REACTIVO */
