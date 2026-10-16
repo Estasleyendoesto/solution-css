@@ -116,7 +116,7 @@ function toggleTheme() {
 ## Key Utilities
 
 * **Layout:** `.is-container`, `.is-container-f`
-* **Flex helpers:** `.is-center`, `.is-horizontal-list`, `.is-vertical-list`
+* **Flex helpers:** `.is-center`, `.is-horizontal`, `.is-vertical` (soporta `--justify`, `--align`)
 * **Buttons:** `.is-btn`, `.is-outline`, `.is-primary`, `.is-rounded`
 * **Tables:** `.is-table-scroll`, `table.row-hoverable`, `table.first-column-bold`
 * **Inspection:** `.is-dev` (highlights container bounding box via non-intrusive box-shadow)

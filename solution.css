@@ -320,8 +320,13 @@ table {
 .is-flex { display: flex; }
 .is-grid { display: grid; }
 .is-block { display: block; }
-.is-vertical-list, .is-horizontal-list { display: flex; margin-left: 0; list-style: none; }
-.is-vertical-list { flex-direction: column; }
-.is-horizontal-list { justify-content: space-around; align-items: center; }
+.is-horizontal, .is-vertical {
+  display: flex;
+  justify-content: var(--justify, normal);
+  align-items: var(--align, center);
+  list-style: none;
+  margin-left: 0;
+}
+.is-vertical { flex-direction: column; align-items: var(--align, stretch); }
 .is-dev, .is-dev-c { box-shadow: 0 0 0 1px #0000ff80 !important; background-color: rgba(0, 0, 200, 0.08) !important; border: none !important; }
 .is-dev-c > *, .is-dev-children > * { background-color: rgba(0, 0, 0, 0.04); box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15); }
